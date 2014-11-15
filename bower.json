@@ -1,0 +1,8 @@
+{
+"name": "angular-sinisag-components",
+"version": "1",
+"dependencies": {
+"angular": "*"
+},
+"main":"./dist/angular-sinisag-components.min.js"
+}
