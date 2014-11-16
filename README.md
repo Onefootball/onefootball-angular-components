@@ -17,6 +17,8 @@ then run
 
 ``` $ bower install ```
 
+and add ```'sinisag.components'``` to your app dependencies.
+
 ## Directives
 
 #### imgChange
