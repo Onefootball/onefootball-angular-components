@@ -1,5 +1,31 @@
 (function ( window, angular, undefined ) {
-angular.module('sinisag.components', ['sinisag.filters.diacritic', 'sinisag.service.DiacriticsRemoval']);
+angular.module('sinisag.components', ['sinisag.filters.diacritic', 'sinisag.service.DiacriticsRemoval', 'sinisag.directives.imgChange']);
+})( window, window.angular );;(function ( window, angular, undefined ) {
+angular
+	.module('sinisag.directives.imgChange', [])
+	.directive('imgChange', function() {
+    return {
+      restrict: 'EA',
+	  scope: true,
+      link: function (scope, element){
+	      		
+	      		element[0].onload = function (){
+	      			if( !element[0].getAttribute("img-loaded") ){
+			  			var url = element[0].getAttribute("change-url");
+			  			var img = new Image();
+			  			img.onload = function () {
+			  				element[0].setAttribute("img-loaded", true);
+			  				element[0].setAttribute("src", url);
+			  			};
+			  			img.onerror = function () {
+			  				element[0].setAttribute("img-loaded", true);
+			  			};
+			  			img.src = url;
+					}
+	      		};
+        	}
+  	};
+});
 })( window, window.angular );;(function ( window, angular, undefined ) {
 angular
 	.module('sinisag.filters.diacritic', [])

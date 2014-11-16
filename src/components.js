@@ -1,1 +1,1 @@
-angular.module('sinisag.components', ['sinisag.filters.diacritic', 'sinisag.service.DiacriticsRemoval']);
+angular.module('sinisag.components', ['sinisag.filters.diacritic', 'sinisag.service.DiacriticsRemoval', 'sinisag.directives.imgChange']);
