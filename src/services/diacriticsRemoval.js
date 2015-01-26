@@ -1,5 +1,5 @@
 angular
-	.module('sinisag.service.DiacriticsRemoval', [])
+	.module('onefootball.service.DiacriticsRemoval', [])
 	.service('DiacriticsRemoval', function() {
 		function Removal() {
 			this.DiacriticsRemovalMap = [

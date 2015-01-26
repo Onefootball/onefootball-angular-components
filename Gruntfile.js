@@ -14,22 +14,20 @@ module.exports = function (grunt) {
 	    },
 	    dist: {
 	      src: "src/**/*.js",
-	      dest: 'dist/angular-sinisag-components.js',
-	    },
+	      dest: 'dist/onefootball-angular-components.js'
+	    }
 	  },
 	  uglify: {
 	    my_target: {
 	      files: {
-	        'dist/angular-sinisag-components.min.js': 'dist/angular-sinisag-components.js'
+	        'dist/onefootball-angular-components.min.js': 'dist/onefootball-angular-components.js'
 	      }
 	    }
 	  }
 	});
 
-	
-
 	grunt.registerTask('default', [
 	'concat',
 	'uglify'
 	]);
-}
+};

@@ -1,8 +1,8 @@
 {
-"name": "angular-sinisag-components",
+"name": "onefootball-angular-components",
 "version": "1",
 "dependencies": {
 "angular": "*"
 },
-"main":"./dist/angular-sinisag-components.min.js"
+"main":"./dist/onefootball-angular-components.min.js"
 }

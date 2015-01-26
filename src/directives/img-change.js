@@ -1,5 +1,5 @@
 angular
-	.module('sinisag.directives.imgChange', [])
+	.module('onefootball.directives.imgChange', [])
 	.directive('imgChange', function() {
     return {
       restrict: 'EA',

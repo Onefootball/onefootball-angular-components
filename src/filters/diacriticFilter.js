@@ -1,5 +1,5 @@
 angular
-	.module('sinisag.filters.diacritic', [])
+	.module('onefootball.filters.diacritic', [])
 	.filter('diacriticStrip', ['DiacriticsRemoval',
 		function(DiacriticsRemoval){
 			return function(input){

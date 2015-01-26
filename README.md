@@ -1,4 +1,4 @@
-angular-sinisag-components
+onefootball-angular-components
 ===============
 
 Various useful angular components
@@ -9,7 +9,7 @@ Open your ```bower.package``` and add the following
 
 ```
  "dependencies": {
-   "angular-sinisag-components":"git@github.com:SinisaG/angular-sinisag-components.git#master"
+   "onefootball-angular-components":"git@github.com:motain/onefootball-angular-components.git#master"
  }
 ```
 
@@ -17,7 +17,7 @@ then run
 
 ``` $ bower install ```
 
-and add ```'sinisag.components'``` to your app dependencies.
+and add ```'onefootball.components'``` to your app dependencies.
 
 ## Directives
 
@@ -38,7 +38,7 @@ This directive will first load default(fallback img), usually served from us. Th
 
 #### diacriticStrip
 
-It's a filter that takes in a string and changes all letters with accents with ther not accented substitutes ('dégagé' ==> 'defage', 'Mützen' => Mutzen). 
+It's a filter that takes in a string and changes all letters with accents with their not accented substitutes ('dégagé' ==> 'defage', 'Mützen' => Mutzen).
 
 Original js code - [lehelk] (http://web.archive.org/web/20120918093154/http://lehelk.com/2011/05/06/script-to-remove-diacritics/).
 
@@ -52,3 +52,29 @@ Usage:
 
 ``` 
 One of the best use case for this is when we want alphabetically sort array of accented strings.
+
+## Copyright and license
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2015 Onefootball
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

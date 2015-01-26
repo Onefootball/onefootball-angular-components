@@ -1,1 +1,1 @@
-angular.module('sinisag.components', ['sinisag.filters.diacritic', 'sinisag.service.DiacriticsRemoval', 'sinisag.directives.imgChange']);
+angular.module('onefootball.components', ['onefootball.filters.diacritic', 'onefootball.service.DiacriticsRemoval', 'onefootball.directives.imgChange']);
