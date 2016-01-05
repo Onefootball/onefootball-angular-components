@@ -25,7 +25,7 @@ bower install onefootball-angular-components
 usage
 
 ```xml
- <link rel="stylesheet" href="bower_components/css-essentials/dist/css-essentials-min.css">
+ <script href="bower_components/onefootball-angular-components/dist/onefootball-angular-components.min.js"> </script>
 ```
 
 and add ```'onefootball.components'``` to your app dependencies.
