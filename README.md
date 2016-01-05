@@ -1,57 +1,137 @@
 onefootball-angular-components
 ===============
 
-Various useful angular components
+Different angular components - filters, directive, services - that we use in our daily development of best football platform: https://www.onefootball.com
 
-## Installation instructions
+## Demo 
 
-Open your ```bower.package``` and add the following
+You can find demo [here] (http://5minfork.com/Onefootball/onefootball-angular-components), just navigate to demo folder.
+
+For better understanding what this components can do, we suggest looking at demo while reading documentation (readme).
+
+## Issues and questions
+
+If you have any issues or questions, please open github issue. Also improvement PRs are very welcome.
+
+## Usage
+
+Package is available through bower
 
 ```
- "dependencies": {
-   "onefootball-angular-components":"git@github.com:motain/onefootball-angular-components.git#master"
- }
+bower install onefootball-angular-components 
+
 ```
 
-then run 
+usage
 
-``` $ bower install ```
+```xml
+ <link rel="stylesheet" href="bower_components/css-essentials/dist/css-essentials-min.css">
+```
 
 and add ```'onefootball.components'``` to your app dependencies.
+
+Or through npm 
+
+```
+npm install onefootball-angular-components 
+
+```
 
 ## Directives
 
 #### imgChange
 
-Directive used on image tags.
+General idea here is that we can use image placeholder, until we resolve our real url. Usually you would use
+image that is cached as placeholder and then replace it with real image. This offers better user experience.
 
 Usage:
 
-```html
-<img src="http://placekitten.com/g/200/300" img-change change-url="http://placekitten.com/g/200/400"/>
-
+```xml
+<img src="http://lorempixel.com/400/200/sports/" img-change={{::imageUrl}}/>
 ``` 
-
-This directive will first load default(fallback img), usually served from us. Then it will try to fetch image from change-url. If it fails, it will keep a default image. If fetching changeUrl was successfull it will replace the default image.
 
 ## Filters 
 
-#### diacriticStrip
+#### cyrillic2latin
 
-It's a filter that takes in a string and changes all letters with accents with their not accented substitutes ('dégagé' ==> 'defage', 'Mützen' => Mutzen).
-
-Original js code - [lehelk] (http://web.archive.org/web/20120918093154/http://lehelk.com/2011/05/06/script-to-remove-diacritics/).
+This filter transliterate cyrillic to latin. We use it for generating cyrillic urls (to use ascii urls).
 
 Usage:
 
-```html
-
+```xml
 <ul>
-	<li ng-repeat= "item in ['dégagé', 'déjà vu', 'démarche', 'démodé', 'dénouement', 'Mützen']">{{item}} ==> {{item | diacriticStrip}}</li>
+    <li ng-repeat= "item in cyrillicList">{{:: item}} ==> {{:: item | cyrillic2latin}}</li>
 </ul>
-
 ``` 
-One of the best use case for this is when we want alphabetically sort array of accented strings.
+
+#### diacriticFilter
+
+This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
+or when you want to generate url from name.
+
+```xml
+<ul>
+    <li ng-repeat= "item in diacriticList">{{:: item}} ==> {{:: item | diacriticStrip}}</li>
+</ul>
+``` 
+
+#### jsonPrettyprint
+
+This filter can be used to quickly pretty print JS object.
+
+```xml
+<pre>
+    {{:: customObject | jsonPrettyprint}}
+</pre>
+``` 
+
+#### newlines
+
+Often text is server from backend and has strange line breaks.
+This filter, together with ngSanitize is used to normalize line breaks in chunk of text (output is html).
+
+
+```xml
+<div ng-bind-html="::newLinesText | newlines">
+``` 
+
+#### orderObjectBy
+
+This filter is used to order list of objects by property.
+
+```xml
+<li ng-repeat= "item in listOfObjects | orderObjectBy : 'name'">
+    name: {{:: item.name}},
+    id: {{:: item.id}}
+</li>
+``` 
+
+#### stringReplace
+
+This is a simple string replace filter. First argument is target to replace, second is replacement pattern and
+last one (optional) are regular expression flags.
+
+ 
+```xml
+<div>{{::strReplace | replace : 'a' :'c' : 'gi'}}</div>
+```
+
+#### urlEncode
+
+This filter is just a wrapper for encodeURI.
+
+```xml
+<div>{{:: encodeURIExample | urlEncode}}</div>
+```
+
+#### urlText
+
+This filter converts random text to url save text (it supports also cyrillic text). It can be used to generate slugs,
+or rewrite urls.
+
+```xml
+<div>{{:: textForUrl | urlText}}</div>
+```
 
 ## Copyright and license
 
