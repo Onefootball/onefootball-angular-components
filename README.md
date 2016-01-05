@@ -25,10 +25,16 @@ bower install onefootball-angular-components
 usage
 
 ```xml
- <script href="bower_components/onefootball-angular-components/dist/onefootball-angular-components.min.js"> </script>
+ <script src="bower_components/onefootball-angular-components/dist/onefootball-angular-components.min.js"> </script>
 ```
 
 and add ```'onefootball.components'``` to your app dependencies.
+
+e.g.:
+
+```javascript
+var app = angular.module('myApp', ['onefootball.components',...]);
+```
 
 Or through npm 
 
