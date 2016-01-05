@@ -1,8 +1,27 @@
 {
-"name": "onefootball-angular-components",
-"version": "1",
-"dependencies": {
-"angular": "*"
-},
-"main":"./dist/onefootball-angular-components.min.js"
+  "name": "onefootball-angular-components",
+  "description": "Common angular components that will help you speed up development and deal with annoying isses",
+  "main": "dist/onefootball-angular-components.min.js",
+  "authors": [
+    "Sinisa Grubor <sinisa.grubor@onefootball.com> (https://www.onefootball.com/)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "filters",
+    "directive",
+    "onefootball"
+  ],
+  "dependencies": {
+    "angular": "*",
+    "angular-sanitize": "*"
+  },
+  "homepage": "https://github.com/Onefootball/onefootball-angular-components/",
+  "moduleType": [],
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }

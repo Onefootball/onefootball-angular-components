@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+    <meta charset="UTF-8">
+    <title>Diacritic filter</title>
+</head>
+<body>
+    <a href="/index.html"> Home </a>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https:////ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+    <script src="/scripts/onefootball-angular-components.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <h1>Diacritic filter</h1>
+    <p>
+        This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
+        or when you want to generate url from name.
+    </p>
+
+    <ul>
+        <li ng-repeat= "item in diacriticList">{{:: item}} ==> {{:: item | diacriticStrip}}</li>
+    </ul>
+</body>
+</html>

@@ -1,1 +1,3 @@
-angular.module('onefootball.components', ['onefootball.filters.diacritic', 'onefootball.service.DiacriticsRemoval', 'onefootball.directives.imgChange']);
+angular
+    .module('onefootball.components',
+        ['onefootball.components.services', 'onefootball.components.filters', 'onefootball.components.directives']);

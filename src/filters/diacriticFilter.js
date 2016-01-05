@@ -1,8 +1,9 @@
 angular
-	.module('onefootball.filters.diacritic', [])
-	.filter('diacriticStrip', ['DiacriticsRemoval',
-		function(DiacriticsRemoval){
-			return function(input){
-				return DiacriticsRemoval.stripDiacritics(input);
-			} 
-		}]);
+    .module('onefootball.components.filters.diacriticStrip', [])
+    .filter('diacriticStrip', ['DiacriticsRemoval', diacriticStrip]);
+
+function diacriticStrip(DiacriticsRemoval) {
+    return function (input) {
+        return DiacriticsRemoval.stripDiacritics(input);
+    }
+}

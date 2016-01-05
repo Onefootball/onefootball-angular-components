@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+    <meta charset="UTF-8">
+    <title>Newlines filter</title>
+</head>
+<body>
+    <a href="/index.html"> Home </a>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https:////ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+    <script src="/scripts/onefootball-angular-components.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <h1>New lines filter</h1>
+    <p>
+        Often text is server from backend and has strange line breaks.
+        This filter, together with ngSanitize is used to normalize line breaks in chunk of text (output is html).
+    </p>
+
+    <h3>Original text</h3>
+    <h5>Output</h5>
+    <pre>
+        {{::newLinesText}}
+    </pre>
+    <h5>As html text</h5>
+    <div ng-bind-html="::newLinesText">
+    </div>
+
+    <hr/>
+
+    <h3>New lines text</h3>
+    <h5>Output</h5>
+    <pre>
+        {{::newLinesText | newlines}}
+    </pre>
+    <h5>As html</h5>
+    <div ng-bind-html="::newLinesText | newlines">
+    </div>
+</body>
+</html>
