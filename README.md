@@ -37,6 +37,17 @@ npm install onefootball-angular-components
 
 ```
 
+## Locally
+
+To run locally, just clone the repo, then 
+
+```
+npm install 
+grunt demo
+
+```
+
+
 ## Directives
 
 #### imgChange

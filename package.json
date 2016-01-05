@@ -1,6 +1,6 @@
 {
   "name": "onefootball-angular-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common angular components that will help you speed up development and deal with annoying isses",
   "main": "dist/onefootball-angular-components.min.js",
   "scripts": {
@@ -29,9 +29,5 @@
     "grunt-contrib-copy": "0.8.2",
     "grunt-contrib-uglify": "0.11.0",
     "load-grunt-tasks": "3.4.0"
-  },
-  "dependencies": {
-    "angular": "*",
-    "angular-sanitize": "*"
   }
 }
