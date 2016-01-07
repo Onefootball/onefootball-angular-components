@@ -61,7 +61,7 @@ grunt demo
 General idea here is that we can use image placeholder, until we resolve our real url. Usually you would use
 image that is cached as placeholder and then replace it with real image. This offers better user experience.
 
-Usage:
+Usage (works also with ngSrc):
 
 ```xml
 <img src="http://lorempixel.com/400/200/sports/" img-change={{::imageUrl}}/>

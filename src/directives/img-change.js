@@ -6,16 +6,17 @@ function imgChange() {
 	return {
 		restrict: 'EA',
 		link: function (scope, element){
-			element[0].onload = function (){
-				if( !element[0].getAttribute("img-loaded") ){
-					var url = element[0].getAttribute("img-change");
+			var el = element[0];
+			el.onload = function (){
+				if( !el.getAttribute("img-loaded") ){
+					var url = el.getAttribute("img-change") || el.getAttribute("data-img-change");
 					var img = new Image();
 					img.onload = function () {
-						element[0].setAttribute("img-loaded", true);
-						element[0].setAttribute("src", url);
+						el.setAttribute("img-loaded", true);
+						el.setAttribute("src", url);
 					};
 					img.onerror = function () {
-						element[0].setAttribute("img-loaded", true);
+						el.setAttribute("img-loaded", true);
 					};
 					img.src = url;
 				}
