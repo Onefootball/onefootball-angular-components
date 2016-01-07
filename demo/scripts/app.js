@@ -1,7 +1,10 @@
 angular
     .module('demo', ['onefootball.components', 'ngSanitize'])
-    .run(function ($rootScope) {
+    .run(function ($rootScope, EventEnumerator, $window) {
         $rootScope.imageUrl = 'http://lorempixel.com/400/200/fashion/';
+        $rootScope.$on(EventEnumerator.imgChangeSuccess, function () {
+            $window.alert('Img successfully changed');
+        });
         $rootScope.diacriticList = ['dégagé', 'déjà vu', 'démarche', 'démodé', 'dénouement', 'Mützen', 'tête-à-tête'];
         $rootScope.cyrillicList = ['радиатор', 'Антарктика', 'телеграмма', 'Англия', 'витамин', 'мираж', 'Шанхай'];
         $rootScope.customObject = {

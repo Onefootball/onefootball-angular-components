@@ -1,8 +1,8 @@
 angular
 	.module('onefootball.components.directives.imgChange', [])
-	.directive('imgChange', imgChange);
+	.directive('imgChange', ['EventEnumerator', imgChange]);
 
-function imgChange() {
+function imgChange(EventEnumerator) {
 	return {
 		restrict: 'EA',
 		link: function (scope, element){
@@ -12,11 +12,13 @@ function imgChange() {
 					var url = el.getAttribute("img-change") || el.getAttribute("data-img-change");
 					var img = new Image();
 					img.onload = function () {
-						el.setAttribute("img-loaded", true);
 						el.setAttribute("src", url);
+						el.setAttribute("img-loaded", true);
+						scope.$emit(EventEnumerator.imgChangeSuccess);
 					};
 					img.onerror = function () {
 						el.setAttribute("img-loaded", true);
+						scope.$emit(EventEnumerator.imgChangeError);
 					};
 					img.src = url;
 				}
