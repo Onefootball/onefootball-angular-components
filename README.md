@@ -60,7 +60,7 @@ grunt demo
 
 General idea here is that we can use image placeholder, until we resolve our real url. Usually you would use
 image that is cached as placeholder and then replace it with real image. This offers better user experience.
-You can also subscribe to two events here, imgChangeSuccess and imgChangeError.
+You can also subscribe to two events here, imgChange.success and imgChange.error.
 
 Usage (works also with ngSrc):
 
