@@ -1,6 +1,6 @@
 angular
     .module('demo', ['onefootball.components', 'ngSanitize'])
-    .run(function ($rootScope, EventEnumerator, $window) {
+    .run(function ($rootScope, EventEnumerator, $window, Guid) {
         $rootScope.imageUrl = 'http://lorempixel.com/400/200/fashion/';
         $rootScope.$on(EventEnumerator.imgChangeSuccess, function () {
             $window.alert('Img successfully changed');
@@ -37,4 +37,8 @@ angular
         $rootScope.encodeURIExample = 'https://www.google.si/maps/search/greifswalder strasse 212';
 
         $rootScope.textForUrl = 'Jose Mourinho camp "frustrated" with Manchester Utd job situation - sources';
+
+        $rootScope.generateGuid = function () {
+            $rootScope.GUID = Guid.generate();
+        };
     });
