@@ -52,7 +52,19 @@ npm install
 grunt demo
 
 ```
+## Services
 
+#### Guid
+
+This service generates unique user id (GUID, UUID, UID)
+
+Usage (you have to inject Guid service in your controller/service/factory):
+
+```xml
+function ($rootScope, Guid) {
+    $rootScope.GUID = Guid.generate();
+}  
+``` 
 
 ## Directives
 
