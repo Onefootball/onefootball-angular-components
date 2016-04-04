@@ -1,3 +1,3 @@
 angular
     .module('onefootball.components.services',
-        ['onefootball.components.services.DiacriticsRemoval', 'onefootball.components.services.Guid']);
+        ['onefootball.components.services.diacriticsRemoval', 'onefootball.components.services.guid']);

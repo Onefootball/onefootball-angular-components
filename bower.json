@@ -23,5 +23,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "jasmine-core": "jasmine#^2.4.1",
+    "angular-mocks": "^1.5.3"
+  }
 }
