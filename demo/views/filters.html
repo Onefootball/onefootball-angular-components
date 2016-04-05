@@ -1,0 +1,236 @@
+<h2>
+    Filters
+</h2>
+
+<div class="filter-section">
+    <h2 id="cyrillic2latin">Cyrillic2latin filter</h2>
+    <p>
+        This filter transliterate cyrillic to latin. We use it for generating cyrillic urls (to use ascii urls).
+    </p>
+
+    <ul>
+        <li ng-repeat= "item in cyrillicList">{{:: item}} ==> {{:: item | cyrillic2latin}}</li>
+    </ul>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="d8c249d0580b41aa2f2de384e9f5793f"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="888659a226e55cfa9a7eb0c3ff7bd8d1"></gist>
+    </div>
+</div>
+<hr/>
+
+<div class="filter-section">
+    <h3 id="diacriticStrip">Diacritic filter</h3>
+    <p>
+        This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
+        or when you want to generate url from name.
+    </p>
+
+    <ul>
+        <li ng-repeat= "item in diacriticList">{{:: item}} ==> {{:: item | diacriticStrip}}</li>
+    </ul>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="893e772c31d45f0d79beb5798af8d1e2"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="72187ca197e633704ceac0a6d91b995b"></gist>
+    </div>
+</div>
+<hr />
+
+<div class="filter-section">
+    <h3 id="jsonPrettyprint">Json pretty print filter</h3>
+    <p>
+        This filter can be used to quickly pretty print JS object.
+    </p>
+    <h6>Normal output</h6>
+    <pre>
+            {{:: customObject}}
+        </pre>
+
+    <h6>Pretty output</h6>
+    <pre>
+        {{:: customObject | jsonPrettyprint}}
+    </pre>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="2d18ba0a05fee7de34a0285f44953f82"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="61a993779aa204752ee4981af8c8bb8a"></gist>
+    </div>
+</div>
+
+<hr/>
+<div class="filter-section">
+    <h3 id="newlines">New lines filter</h3>
+    <p>
+        Often text is server from backend and has strange line breaks.
+        This filter, together with ngSanitize is used to normalize line breaks in chunk of text (output is html).
+    </p>
+
+    <h5>Original text</h5>
+    <h6>Output</h6>
+    <pre>
+        {{::newLinesText}}
+    </pre>
+    <h6>As html text</h6>
+    <div ng-bind-html="::newLinesText">
+    </div>
+
+    <h5>New lines text</h5>
+    <h6>Output</h6>
+    <pre>
+            {{::newLinesText | newlines}}
+        </pre>
+    <h6>As html</h6>
+    <div ng-bind-html="::newLinesText | newlines">
+    </div>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="07b1b0881a5f987fedf02c44e07f6e05"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="79d87411eb6cc67db923b1b9872f799b"></gist>
+    </div>
+</div>
+<hr/>
+<div class="filter-section">
+    <h3 id="orderObjectBy">Order object by filter</h3>
+    <p>
+        This filter is used to order list of objects by property.
+    </p>
+
+    <h5>
+        Original list
+    </h5>
+    <ul>
+        <li ng-repeat= "item in listOfObjects">
+            name: {{:: item.name}},
+            id: {{:: item.id}}
+        </li>
+    </ul>
+
+    <h5>
+        List of object sorted by id
+    </h5>
+    <ul>
+        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'id'">
+            name: {{:: item.name}},
+            id: {{:: item.id}}
+        </li>
+    </ul>
+    <h5>
+        List of object sorted by name
+    </h5>
+    <ul>
+        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'name'">
+            name: {{:: item.name}},
+            id: {{:: item.id}}
+        </li>
+    </ul>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="0d87fa516f9313212f6367524f90eee4"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="b813f0dbf9ebabdfaf3773eed273369b"></gist>
+    </div>
+</div>
+<hr/>
+<div class="filter-section">
+    <h3 id="replace">Replace filter</h3>
+    <p>
+        This is a simple string replace filter. First argument is target to replace, second is replacement pattern and
+        last one (optional) are regular expression flags.
+    </p>
+
+    <h5>Original string</h5>
+    <div>{{::strReplace}}</div>
+
+    <h5>Replace string (a witch c)</h5>
+    <div>{{::strReplace | replace : 'a' :'c'}}</div>
+
+    <h5>Replace string globally (a with c and flag g)</h5>
+    <div>{{::strReplace | replace : 'a' :'c' : 'g'}}</div>
+
+    <h5>Replace string globally and ignore casing (a with c and flags gi)</h5>
+    <div>{{::strReplace | replace : 'a' :'c' : 'gi'}}</div>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="747b81f047de97c37fd41df630186993"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="7e45ad2f0097b17f61e10b736e2ad475"></gist>
+    </div>
+</div>
+<hr/>
+
+<div class="filter-section">
+    <h3 id="urlEncode">Url encode filter</h3>
+    <p>
+        This filter is just a wrapper for encodeURI.
+    </p>
+
+    <h5>Original url</h5>
+    <div>{{:: encodeURIExample}}</div>
+
+    <h5>Encoded url</h5>
+    <div>{{:: encodeURIExample | urlEncode}}</div>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="e2fa8fc3af3a29764e94947e2c18c98e"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="748baaa1e9f59bbc27fb38552e898b24"></gist>
+    </div>
+</div>
+<hr/>
+
+<div class="filter-section">
+    <h3 id="urlText">Url text filter</h3>
+    <p>
+        This filter converts random text to url save text (it supports also cyrillic text). It can be used to generate slugs,
+        or rewrite urls.
+    </p>
+
+    <h5>Original text</h5>
+    <div>{{:: textForUrl}}</div>
+
+    <h5>Text "urlzied"</h5>
+    <div>{{:: textForUrl | urlText}}</div>
+
+    <h5>Example code</h5>
+    <h6>Javascript</h6>
+    <div class="gist-wrapper">
+        <gist id="e2fa8fc3af3a29764e94947e2c18c98e"></gist>
+    </div>
+    <h6>HTML</h6>
+    <div class="gist-wrapper">
+        <gist id="88c5ec9607e1585c5286d67efc966157"></gist>
+    </div>
+</div>

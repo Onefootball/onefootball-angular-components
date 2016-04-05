@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Onefootball angular components</title>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
-</head>
-<body>
-    <h1>Onefootball angular components</h1>
-    <p>
-      This package contains useful angular components - directives, filters, services,...
-    </p>
+    <head>
+        <meta charset="UTF-8">
+        <title>Onefootball angular components</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--resources-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+              integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+              crossorigin="anonymous">
+        <script src="/scripts/dist/all.js" async></script>
+        <style>
+            html {
+                background: #e1e6ea;
+            }
+            body {
+                background: #ffffff;
+                min-height: 100vh;
+            }
+            h1, h2, h3, h4, h5, h6, a {
+                color: #32b846;
+            }
+            a:hover {
+                font-weight: bold;
+                color: #32b846;
+            }
+            hr {
+                margin-bottom: 60px;
+                border-color: black;
+            }
+            .filter-section{
+                min-height: 800px;
+            }
+            p {
+                margin: 12px 0;
+            }
+        </style>
+    </head>
+    <body data-ng-app="demoModule" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="#!/">
+                    <h1>Onefootball angular components</h1>
+                </a>
+                <p>
+                    This package contains some angular components - directives, filters, services -
+                    that we use in <a href="https://www.onefootball.com">Onefootball webapp</a>
+                </p>
+            </div>
 
-    <h3>
-       Services
-    </h3>
-    <ul>
-        <li>
-            <a href="services/guid.html">GUID</a>
-        </li>
-    </ul>
-
-    <h3>
-        Directives
-    </h3>
-    <ul>
-        <li>
-            <a href="directives/imageFallback.html">Image fallback</a>
-        </li>
-    </ul>
-
-    <h3>
-        Filters
-    </h3>
-    <ul>
-        <li>
-            <a href="filters/diacriticFilter.html">Diacritic remover</a>
-        </li>
-        <li>
-            <a href="filters/cyrillic2latin.html">Cyrillic to latin transliterate</a>
-        </li>
-        <li>
-            <a href="filters/jsonPrettyprint.html">Json pretty print</a>
-        </li>
-        <li>
-            <a href="filters/newlines.html">New lines</a>
-        </li>
-        <li>
-            <a href="filters/orderObjectBy.html">Order object by</a>
-        </li>
-        <li>
-            <a href="filters/stringReplace.html">String replace</a>
-        </li>
-        <li>
-            <a href="filters/urlEncode.html">Encode URI</a>
-        </li>
-        <li>
-            <a href="filters/urlText.html">Url text</a>
-        </li>
-    </ul>
-</body>
+            <div class="col-xs-12">
+                <a class="btn btn-default" href="#!/" role="button">Home</a>
+            </div>
+            <div class="col-xs-12">
+                <hr />
+                <div ng-view></div>
+            </div>
+        </div>
+    </body>
 </html>

@@ -26,6 +26,8 @@
   ],
   "devDependencies": {
     "jasmine-core": "jasmine#^2.4.1",
-    "angular-mocks": "^1.5.3"
+    "angular-mocks": "1.5.3",
+    "angular-route": "1.5.3",
+    "angular-gist": "^1.0.0"
   }
 }

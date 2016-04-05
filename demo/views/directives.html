@@ -1,0 +1,14 @@
+<h3 id="img-change">Image fallback</h3>
+<p>
+    General idea here is that we can use image placeholder, until we resolve our real url. Usually you would use
+    image that is cached as placeholder and then replace it with real image. This offers better user experience.
+</p>
+
+<img src="http://placehold.it/350x150" img-change="{{::imageUrl}}" />
+
+<h5>Example code</h5>
+<h6>Javascript</h6>
+<gist id="20b11b5f52575cd7fde0b0d5d18d9f5c"></gist>
+
+<h6>HTML</h6>
+<gist id="cff8664bc718e9aa7063e6899ee91eea"></gist>
