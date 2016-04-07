@@ -42,6 +42,11 @@ module.exports = function (grunt) {
                 cwd: 'dist/',
                 expand: true
             }
+        },
+        karma: {
+            unit: {
+                configFile: 'test/karma.conf.js'
+            }
         }
     });
 
@@ -55,4 +60,6 @@ module.exports = function (grunt) {
         'copy:demo',
         'connect:demo'
     ]);
+
+    grunt.registerTask ('test', ['karma:unit']);
 };

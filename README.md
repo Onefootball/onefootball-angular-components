@@ -5,7 +5,7 @@ Different angular components - filters, directive, services - that we use in our
 
 ## Demo 
 
-You can find demo [here] (http://5minfork.com/Onefootball/onefootball-angular-components), just navigate to demo folder.
+You can find demo [here] (http://onefootball.github.io/onefootball-angular-components/).
 
 For better understanding what this components can do, we suggest looking at demo while reading documentation (readme).
 
@@ -52,6 +52,16 @@ npm install
 grunt demo
 
 ```
+
+## Test
+
+To run tests, run
+
+``` 
+grunt test
+
+```
+
 ## Services
 
 #### Guid

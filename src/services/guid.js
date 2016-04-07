@@ -1,5 +1,5 @@
 angular
-    .module('onefootball.components.services.Guid', [])
+    .module('onefootball.components.services.guid', [])
     .service('Guid', ['$window', guidProvider]);
 
 function guidProvider($window) {
