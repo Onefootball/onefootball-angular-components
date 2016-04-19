@@ -90,6 +90,33 @@ Usage (works also with ngSrc):
 <img src="http://lorempixel.com/400/200/sports/" img-change="{{::imageUrl}}" />
 ``` 
 
+#### responsiveImage
+
+This directive provides a nice interface around the "srcset" attribute and acccepts both a placeholder URL 
+and a fallback one in case an error occures while loading the image. You can also subscribe to two events 
+here, imgChange.success and imgChange.error.
+
+Usage (works also with ngSrc):
+
+```xml
+<script>
+    $scope.image = {
+        fallback: 'http://placehold.it/700x300',
+        images: [{
+            url: '/images/bikes-400.jpg',
+            width: '400'
+        }, {
+            url: '/images/bikes-1280.jpg',
+            width: '1280'
+        }, {
+            url: '/images/bikes-2560.jpg',
+            width: '2560'
+        }]
+    };
+</script>
+<img src="/images/bikes-400.jpg" responsive-image="{{ ::image }}" />
+```
+
 ## Filters 
 
 #### cyrillic2latin
