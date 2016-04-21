@@ -36,16 +36,8 @@ demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerat
         placeholder: imagesAsArray[0].url,
         fallback: 'http://placehold.it/700x300',
         images: imagesAsArray,
-        sizes: sizes
-    };
-
-    //inview
-    $scope.$on(EventEnumerator.inView, function (event, element) {
-        $window.alert('Element in view! Element id: ' + element[0].id);
-    });
-
-    $scope.options = {
-        keepBound: true
+        sizes: sizes,
+        lazyLoad: true
     };
 }]);
 

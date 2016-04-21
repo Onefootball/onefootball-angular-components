@@ -1,16 +1,16 @@
 angular
     .module('onefootball.components.directives.responsiveImage', [])
-    .directive('responsiveImage', ['EventEnumerator', responsiveImage]);
+    .directive('responsiveImage', ['EventEnumerator', '$rootScope', responsiveImage]);
 
 /**
- * Use: '<img responsive-image="{{ image }}" />'
+ * Use: '<img responsive-image="image" />'
  *
  * See the description of the linking function for details about `image`.
  *
  * See also https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images and
  * http://www.webdesignerdepot.com/2015/08/the-state-of-responsive-images/
  */
-function responsiveImage(EventEnumerator) {
+function responsiveImage(EventEnumerator, $rootScope) {
     return {
         restrict: 'A',
         scope: {
@@ -32,6 +32,7 @@ function responsiveImage(EventEnumerator) {
      *  is respectfully associated to the densities `1x`, `2x`, `3x`.
      * @param {string|array}        scope.responsiveImage.sizes Optional list of sizes to match to the elements in the
      * `images` array.
+     * @params {boolean}            scope.lazyLoad will load images only when they are in viewport
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset
      */
@@ -40,6 +41,7 @@ function responsiveImage(EventEnumerator) {
         scope.ONE_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         scope.DEFAULT_SIZE = "(min-aspect-ratio: 4/5) 80vh";
 
+        var lazyLoadListener;
         var _options = scope.responsiveImage;
         _options.fallback = _options.fallback || scope.ONE_PIXEL;
         _options.placeholder = _options.placeholder || scope.ONE_PIXEL;
@@ -50,31 +52,46 @@ function responsiveImage(EventEnumerator) {
             element.attr('src', _options.placeholder);
         }
 
-        // then we try to load the right image in the background
-        scope.fakeImage = angular.element(new Image());
-        scope.fakeImage.bind("load", function (event) {
-            element.attr('srcset', scope.fakeImage.attr('srcset'));
-            delete scope.fakeImage;
-            scope.$emit(EventEnumerator.imgChangeSuccess, {src: getSrcFromEvent(event)});
-        });
-
-        scope.fakeImage.bind("error", function () {
-            element.attr('src', _options.fallback);
-            delete scope.fakeImage;
-            scope.$emit(EventEnumerator.imgChangeError);
-        });
-
-        if (_options.sizes) {
-            var sizes = unserializeSizes(_options.sizes);
-            scope.fakeImage.attr('sizes', sizes);
-            element.attr('sizes', sizes);
+        if (_options.lazyLoad) {
+            lazyLoadListener = $rootScope.$on(EventEnumerator.inView, function (event, el) {
+                if (el === element) {
+                    handleImage();
+                }
+            });
+            scope.$on('$destroy', function () {
+                lazyLoadListener();
+            });
+        } else {
+            handleImage();
         }
 
-        if (_options.images) {
-            var srcset = unserializeImages(_options.images);
-            scope.fakeImage.attr('srcset', srcset);
-        } else {
-            element.attr('src', _options.fallback);
+        function handleImage() {
+            // then we try to load the right image in the background
+            scope.fakeImage = angular.element(new Image());
+            scope.fakeImage.bind("load", function (event) {
+                element.attr('srcset', scope.fakeImage.attr('srcset'));
+                delete scope.fakeImage;
+                scope.$emit(EventEnumerator.imgChangeSuccess, {src: getSrcFromEvent(event)});
+            });
+
+            scope.fakeImage.bind("error", function () {
+                element.attr('src', _options.fallback);
+                delete scope.fakeImage;
+                scope.$emit(EventEnumerator.imgChangeError);
+            });
+
+            if (_options.sizes) {
+                var sizes = unserializeSizes(_options.sizes);
+                scope.fakeImage.attr('sizes', sizes);
+                element.attr('sizes', sizes);
+            }
+
+            if (_options.images) {
+                var srcset = unserializeImages(_options.images);
+                scope.fakeImage.attr('srcset', srcset);
+            } else {
+                element.attr('src', _options.fallback);
+            }
         }
 
         function getSrcFromEvent(event) {

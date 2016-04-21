@@ -1,13 +1,10 @@
 angular
     .module('onefootball.components.directives.inView', [])
-    .directive('inView', ['EventEnumerator', '$document', inView]);
+    .directive('inView', ['EventEnumerator', '$document', '$window', inView]);
 
-function inView(EventEnumerator, $document) {
+function inView(EventEnumerator, $document, $window) {
     return {
         restrict: 'EA',
-        scope: {
-            options: '<'
-        },
         /**
          *
          * @param scope
@@ -15,11 +12,12 @@ function inView(EventEnumerator, $document) {
          * @param scope.keepBound - by default, when element is in view, we will not listen for it anymore
          *                          setting keepBound on true, will keep checking if element is in viewport
          * @param element
+         * @param attrs
          */
-        link: function (scope, element) {
+        link: function (scope, element, attrs) {
 
             var el = element [0];
-            var options = scope.options || {};
+            var options = attrs.inView && $window.JSON.parse(attrs.inView) || {};
             var keepBound = options.keepBound;
 
             inViewHandler(el);
