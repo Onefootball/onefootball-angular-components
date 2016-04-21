@@ -1,6 +1,8 @@
 onefootball-angular-components
 ===============
 
+[![Build Status](https://travis-ci.org/Onefootball/onefootball-angular-components.svg?branch=master)](https://travis-ci.org/Onefootball/onefootball-angular-components)
+
 Different angular components - filters, directive, services - that we use in our daily development of best football platform: https://www.onefootball.com
 
 ## Demo 

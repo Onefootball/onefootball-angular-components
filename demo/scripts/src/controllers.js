@@ -4,7 +4,7 @@ demoControllers.controller('baseCtrl', function () {});
 
 demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerator', function ($scope, $window, EventEnumerator) {
     $scope.imageUrl = 'http://placehold.it/700x300';
-    $scope.$on(EventEnumerator.imgChangeSuccess, function (e) {
+    $scope.$on(EventEnumerator.imgChangeSuccess, function () {
         $window.alert('Img successfully changed');
     });
 

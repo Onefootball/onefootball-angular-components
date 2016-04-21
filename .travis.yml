@@ -7,4 +7,5 @@ before_script:
   - 'npm install -g grunt-cli'
   - 'npm install -g bower'
   - 'bower --config.interactive=false --force install'
-  
+after_success:
+  - coveralls

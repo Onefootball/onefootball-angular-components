@@ -4,7 +4,7 @@
     image that is cached as placeholder and then replace it with real image. This offers better user experience.
 </p>
 
-<img src="http://placehold.it/350x150" img-change="{{::imageUrl}}" />
+<img src="http://placehold.it/350x150" img-change="::imageUrl" />
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
@@ -20,52 +20,33 @@
     fallback one in case an error occures while loading the image.
 </p>
 
-<img responsive-image="{{ ::image }}"
+<p>
+    As an argument, this directive takes a responsive image object, which has the following properties:
+
+    <pre>
+     * @param {string} fallback [OPTIONAL]      | will be used `src` in case of an error while loading the appropriate image - if not provided, we will render one empty pixel.
+
+     * @param {string} placeholder [OPTIONAL]   | Will be set as a temporary `src` in case the attribute is not already present. If none of those is provided, we will render 1 empty pixel.
+
+     * @param {string|array|object} images      | The items in the array are expected to have a `url` property and either a `width` or a `density` one.
+                                                  In case of an object, each of the properties `s`, `m`, and  `l` is respectfully associated to the densities `1x`, `2x`, `3x`.
+
+     * @param {string|array} sizes [OPTIONAL]   | Optional list of sizes to match to the elements in the `images` array. If sizes are not provided, we will set it as "(min-aspect-ratio: 4/5) 80vh".
+    </pre>
+</p>
+
+<p>
+    For example usage, take a look at examples under.
+</p>
+
+<img responsive-image="::image"
      alt="This is our responsive image"
      title="Isn't that nice?"
-     style="width: 100%; border: 1px solid black;" />
+     style="width: 100%;" />
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
-<p>
-    <!--  TODO replace by a gist -->
-    <pre>
-    var imagesAsArray = [{
-        url: '/images/bikes-400.jpg',
-        width: '400'
-    }, {
-        url: '/images/bikes-800.jpg',
-        width: '800'
-    }, {
-        url: '/images/bikes-1280.jpg',
-        width: '1280'
-    }, {
-        url: '/images/bikes-2560.jpg',
-        width: '2560'
-    }];
-
-    var sizes = [
-        "(max-width: 320px) 400px", // media + size (px or vw)
-        "(max-width: 800px) 800px",
-        "(max-width: 1440px) 1280px",
-        "2560px"
-    ];
-
-    $scope.image = {
-        placeholder: imagesAsArray[0].url,
-        fallback: 'http://placehold.it/700x300',
-        images: imagesAsArray,
-        sizes: sizes
-    };
-    </pre>
-</p>
+<gist id="a08ae57205a9b7fe7ab0088d14b067a0"></gist>
 
 <h6>HTML</h6>
-<p>
-    <!--  TODO replace by a gist -->
-    <pre>
-        &lt;img responsive-image="{{ ::image }}"
-             alt="This is our responsive image"
-             title="Isn't that nice?" /&gt;
-    </pre>
-</p>
+<gist id="bd82fa3fe01c2d6b2ba7b1609cb2e9d7"></gist>

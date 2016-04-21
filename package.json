@@ -1,6 +1,6 @@
 {
   "name": "onefootball-angular-components",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Common angular components that will help you speed up development and deal with annoying isses",
   "main": "dist/onefootball-angular-components.min.js",
   "scripts": {

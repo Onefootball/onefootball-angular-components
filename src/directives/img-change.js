@@ -5,10 +5,13 @@ angular
 function imgChange(EventEnumerator) {
     return {
         restrict: 'EA',
-        link: function (scope, element, attr) {
+        scope: {
+            imgChange: '='
+        },
+        link: function (scope, element) {
             element.bind('load', function () {
                 if (!element.attr("loaded")) {
-                    var url = attr.imgChange;
+                    var url = scope.imgChange;
                     scope.newImg = angular.element(new Image());
 
                     scope.newImg.bind ('load', function () {
