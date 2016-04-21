@@ -121,6 +121,16 @@ Usage (works also with ngSrc):
 <img src="/images/bikes-400.jpg" responsive-image="{{ ::image }}" />
 ```
 
+#### inView
+
+InView directive triggers and event when element is in viewport. 
+
+Usage (for more info look at the demo):
+
+```xml
+<div in-view options="::options"></div>
+``` 
+
 ## Filters 
 
 #### cyrillic2latin

@@ -50,3 +50,26 @@
 
 <h6>HTML</h6>
 <gist id="bd82fa3fe01c2d6b2ba7b1609cb2e9d7"></gist>
+
+<h3 id="in-view">In view</h3>
+<p>
+    This directive triggers an event when element is in viewport. It passes also the right element to the event emit.
+</p>
+
+<p>
+   You can pass in an options object. Settings keepBound on true, will send an event every time element is in viewport.
+    By default, in view event is sent only first time element is in viewport.
+</p>
+
+<p>
+    With inView event, we also pass the current element.
+</p>
+
+<div id="in-view-directive" in-view></div>
+
+<h5>Example code</h5>
+<h6>Javascript</h6>
+<gist id="7fa6a59c8c0b4ae203e8af29fba06852"></gist>
+
+<h6>HTML</h6>
+<gist id="bc7c4a734add6dfbd8d1c27cc5c1056d"></gist>
