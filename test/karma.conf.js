@@ -16,7 +16,9 @@ module.exports = function(config) {
     frameworks: [
       'jasmine'
     ],
-
+    preprocessors: {
+      "src/**/*.js": "coverage"
+    },
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.js',
@@ -29,6 +31,11 @@ module.exports = function(config) {
     // list of files / patterns to exclude
     exclude: [
     ],
+
+    coverageReporter: {
+      type: "lcov",
+      dir: "coverage/"
+    },
 
     // web server port
     port: 8080,
@@ -46,12 +53,13 @@ module.exports = function(config) {
     ],
 
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-coverage'
     ],
 
     // Continuous Integration mode
