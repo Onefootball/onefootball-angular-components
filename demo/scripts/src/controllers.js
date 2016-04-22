@@ -3,11 +3,14 @@ var demoControllers = angular.module('demoControllers', []);
 demoControllers.controller('baseCtrl', function () {});
 
 demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerator', function ($scope, $window, EventEnumerator) {
+    //imgChange
     $scope.imageUrl = 'http://placehold.it/700x300';
+
     $scope.$on(EventEnumerator.imgChangeSuccess, function () {
         $window.alert('Img successfully changed');
     });
 
+    //responsive image
     var imagesAsArray = [{
         url: '/images/bikes-400.jpg',
         width: '400'
@@ -33,7 +36,8 @@ demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerat
         placeholder: imagesAsArray[0].url,
         fallback: 'http://placehold.it/700x300',
         images: imagesAsArray,
-        sizes: sizes
+        sizes: sizes,
+        lazyLoad: true
     };
 }]);
 

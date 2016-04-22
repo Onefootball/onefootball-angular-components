@@ -20,5 +20,15 @@
             var input = 'Siniša Grubor';
             expect (urlText (input)).toEqual ('sinisa-grubor');
         });
+
+        it ('can handle empty string', function () {
+            var input = '';
+            expect (urlText (input)).toEqual ('');
+        });
+
+        it ('can handle undefined input', function () {
+            var input;
+            expect (urlText (input)).toEqual ('');
+        });
     });
 }) ();

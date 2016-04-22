@@ -253,4 +253,30 @@
         });
     });
 
+    describe ('responsiveImage works with lazy load', function () {
+        var element;
+        var iScope;
+        beforeEach(inject(function ($rootScope, $compile) {
+
+            var scope = $rootScope.$new();
+            scope.image = {
+                images: {
+                    s: 'http://placehold.it/100x100',
+                    m: 'http://placehold.it/500x500',
+                    l: 'http://placehold.it/1000x1000'
+                },
+                lazyLoad: true
+            };
+            element = $compile ('<img responsive-image="::image" />') (scope);
+            iScope = element.isolateScope();
+            iScope.$digest();
+        }));
+
+        it ('lazy load is handled correctlu', inject(function (EventEnumerator) {
+            iScope.$emit(EventEnumerator.inView, element);
+            iScope.fakeImage.triggerHandler('load');
+            expect(element.attr('srcset')).toEqual ('http://placehold.it/100x100 1x,http://placehold.it/500x500 2x,http://placehold.it/1000x1000 3x');
+        }));
+    });
+
 }) ();

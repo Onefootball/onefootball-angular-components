@@ -16,8 +16,8 @@
 
 <h3 id="responsive-image">Responsive Image</h3>
 <p>
-    This directive provides a nice interface around the "srcset" attribute and acccepts both a placeholder URL and a
-    fallback one in case an error occures while loading the image.
+    This directive provides a nice interface around the "srcset" attribute and accepts both a placeholder URL and a
+    fallback one in case an error occurs while loading the image.
 </p>
 
 <p>
@@ -32,6 +32,8 @@
                                                   In case of an object, each of the properties `s`, `m`, and  `l` is respectfully associated to the densities `1x`, `2x`, `3x`.
 
      * @param {string|array} sizes [OPTIONAL]   | Optional list of sizes to match to the elements in the `images` array. If sizes are not provided, we will set it as "(min-aspect-ratio: 4/5) 80vh".
+
+     * @params {boolean} lazyLoad [OPTIONAL]    | will load images only when they are in viewport (however placeholder - if set - will be loaded right away). This works in combination with in-view directive
     </pre>
 </p>
 
@@ -40,9 +42,10 @@
 </p>
 
 <img responsive-image="::image"
+     in-view
      alt="This is our responsive image"
      title="Isn't that nice?"
-     style="width: 100%;" />
+     style="max-width: 100%;" />
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
@@ -50,3 +53,28 @@
 
 <h6>HTML</h6>
 <gist id="bd82fa3fe01c2d6b2ba7b1609cb2e9d7"></gist>
+
+<h3 id="in-view">In view</h3>
+<p>
+    This directive triggers an event when element is in viewport. It passes also the right element to the event emit.
+</p>
+
+<p>
+   You can pass in an options object. Setting keepBound on true, will send an event every time element is in viewport.
+   By default, inView event is sent only the first time element is in viewport.
+</p>
+
+<p>
+    With inView event, we also pass the current element.
+</p>
+
+<p>
+    You can see live demo in responsiveImage example (it is lazy loaded).
+</p>
+
+<h5>Example code</h5>
+<h6>Javascript</h6>
+<gist id="7fa6a59c8c0b4ae203e8af29fba06852"></gist>
+
+<h6>HTML</h6>
+<gist id="bc7c4a734add6dfbd8d1c27cc5c1056d"></gist>

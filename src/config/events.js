@@ -3,7 +3,8 @@ angular
     .constant('EventEnumerator',
         {
             imgChangeSuccess: 'imgChange.success',
-            imgChangeError: 'imgChange.error'
+            imgChangeError: 'imgChange.error',
+            inView: 'element.inview'
         }
     );
 
