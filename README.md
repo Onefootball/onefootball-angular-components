@@ -1,13 +1,14 @@
 onefootball-angular-components
 ===============
 
+[![Build Status](https://travis-ci.org/Onefootball/onefootball-angular-components.svg?branch=master)](https://travis-ci.org/Onefootball/onefootball-angular-components)
+[![Coverage Status](https://coveralls.io/repos/github/Onefootball/onefootball-angular-components/badge.svg?branch=master)](https://coveralls.io/github/Onefootball/onefootball-angular-components?branch=master)
+
 Different angular components - filters, directive, services - that we use in our daily development of best football platform: https://www.onefootball.com
 
-## Demo 
+## Demo, Code snippets 
 
 You can find demo [here] (http://onefootball.github.io/onefootball-angular-components/).
-
-For better understanding what this components can do, we suggest looking at demo while reading documentation (readme).
 
 ## Issues and questions
 
@@ -88,6 +89,43 @@ Usage (works also with ngSrc):
 
 ```xml
 <img src="http://lorempixel.com/400/200/sports/" img-change="{{::imageUrl}}" />
+``` 
+
+#### responsiveImage
+
+This directive provides a nice interface around the "srcset" attribute and acccepts both a placeholder URL 
+and a fallback one in case an error occures while loading the image. You can also subscribe to two events 
+here, imgChange.success and imgChange.error.
+
+Usage (works also with ngSrc):
+
+```xml
+<script>
+    $scope.image = {
+        fallback: 'http://placehold.it/700x300',
+        images: [{
+            url: '/images/bikes-400.jpg',
+            width: '400'
+        }, {
+            url: '/images/bikes-1280.jpg',
+            width: '1280'
+        }, {
+            url: '/images/bikes-2560.jpg',
+            width: '2560'
+        }]
+    };
+</script>
+<img src="/images/bikes-400.jpg" responsive-image="{{ ::image }}" />
+```
+
+#### inView
+
+InView directive triggers and event when element is in viewport. 
+
+Usage (for more info look at the demo):
+
+```xml
+<div in-view options="::options"></div>
 ``` 
 
 ## Filters 
