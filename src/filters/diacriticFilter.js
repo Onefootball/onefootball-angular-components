@@ -5,5 +5,5 @@ angular
 function diacriticStrip(DiacriticsRemoval) {
     return function (input) {
         return DiacriticsRemoval.stripDiacritics(input);
-    }
+    };
 }

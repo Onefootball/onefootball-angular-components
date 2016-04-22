@@ -53,5 +53,26 @@
             expect (result[1].name).toEqual('Zan');
             expect (result[2].name).toEqual('Neza');
         });
+
+        it ('order object by numerical property and reverse them', function () {
+            var input = [
+                {
+                    id: 5,
+                    name: 'Zan'
+                },
+                {
+                    id: 1,
+                    name: 'Masa'
+                },
+                {
+                    id: 10,
+                    name: 'Neza'
+                }
+            ];
+            var result = orderObjectBy (input, 'id', true);
+            expect (result[0].name).toEqual('Neza');
+            expect (result[1].name).toEqual('Zan');
+            expect (result[2].name).toEqual('Masa');
+        });
     });
 }) ();

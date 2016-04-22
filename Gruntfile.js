@@ -7,7 +7,7 @@ module.exports = function (grunt) {
                 options: {
                     separator: ';',
                     process: function (src) {
-                        return '(function ( window, angular, undefined ) {\n'
+                        return '(function ( window, angular) {\n'
                             + src +
                             '\n})( window, window.angular );'
                     }
@@ -71,6 +71,17 @@ module.exports = function (grunt) {
                 force: false,
                 recursive: true
             }
+        },
+        jscs: {
+          files: {
+            src: [
+              'src/**/**.js'
+            ]
+          },
+          options: {
+            config: ".jscsrc",
+            force: true
+          }
         }
     });
 
@@ -87,5 +98,5 @@ module.exports = function (grunt) {
         'connect:demo'
     ]);
 
-    grunt.registerTask ('test', ['karma:unit']);
+    grunt.registerTask ('test', ['karma:unit', 'jscs']);
 };

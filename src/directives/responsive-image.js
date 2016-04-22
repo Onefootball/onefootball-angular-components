@@ -54,16 +54,21 @@ function responsiveImage(EventEnumerator, $rootScope) {
 
         if (_options.lazyLoad) {
             lazyLoadListener = $rootScope.$on(EventEnumerator.inView, function (event, el) {
-                if (el === element) {
+                if (angular.equals(el, element)) {
                     handleImage();
+                    lazyLoadListener ();
                 }
             });
-            scope.$on('$destroy', function () {
-                lazyLoadListener();
-            });
+
         } else {
             handleImage();
         }
+
+        scope.$on('$destroy', function () {
+            if (lazyLoadListener) {
+                lazyLoadListener();
+            }
+        });
 
         function handleImage() {
             // then we try to load the right image in the background
