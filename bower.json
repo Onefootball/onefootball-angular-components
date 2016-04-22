@@ -29,5 +29,8 @@
     "angular-mocks": "1.5.3",
     "angular-route": "1.5.3",
     "angular-gist": "^1.0.0"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
   }
 }
