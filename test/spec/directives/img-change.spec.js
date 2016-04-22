@@ -12,16 +12,16 @@
         beforeEach(inject(function ($rootScope, $compile) {
             var scope = $rootScope;
             scope.imageUrl = 'http://lorempixel.com/400/200/fashion/';
-            element = $compile ('<img src="http://lorempixel.com/400/200/sports/" data-img-change="{{::imageUrl}}"/>') (scope);
-            iScope = element.scope();
+            element = $compile ('<img src="http://lorempixel.com/400/200/sports/" data-img-change="::imageUrl"/>') (scope);
+            iScope = element.isolateScope();
             iScope.$digest();
         }));
 
         it ('changes src url on load', function () {
             element.triggerHandler('load');
-            expect(iScope.newImg.attr('src')).toEqual (iScope.imageUrl);
+            expect(iScope.newImg.attr('src')).toEqual (iScope.imgChange);
             iScope.newImg.triggerHandler('load');
-            expect(element.attr('src')).toEqual (iScope.imageUrl);
+            expect(element.attr('src')).toEqual (iScope.imgChange);
             expect(element.attr('loaded')).toEqual ('true');
         });
 
