@@ -145,6 +145,16 @@
         </li>
     </ul>
 
+    <h5>
+        List of object sorted by name reverted
+    </h5>
+    <ul>
+        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'name' : true">
+            name: {{:: item.name}},
+            id: {{:: item.id}}
+        </li>
+    </ul>
+
     <h5>Example code</h5>
     <h6>Javascript</h6>
     <div class="gist-wrapper">
@@ -227,7 +237,7 @@
     <h5>Example code</h5>
     <h6>Javascript</h6>
     <div class="gist-wrapper">
-        <gist id="e2fa8fc3af3a29764e94947e2c18c98e"></gist>
+        <gist id="a9b6c3b4fe041acce8dcf6be2f91583f"></gist>
     </div>
     <h6>HTML</h6>
     <div class="gist-wrapper">
