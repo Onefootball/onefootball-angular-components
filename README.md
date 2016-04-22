@@ -88,7 +88,7 @@ You can also subscribe to two events here, imgChange.success and imgChange.error
 Usage (works also with ngSrc):
 
 ```xml
-<img src="http://lorempixel.com/400/200/sports/" img-change="{{::imageUrl}}" />
+<img src="http://lorempixel.com/400/200/sports/" img-change="::imageUrl" />
 ``` 
 
 #### responsiveImage
@@ -115,7 +115,7 @@ Usage (works also with ngSrc):
         }]
     };
 </script>
-<img src="/images/bikes-400.jpg" responsive-image="{{ ::image }}" />
+<img src="/images/bikes-400.jpg" responsive-image="::image" />
 ```
 
 #### inView
