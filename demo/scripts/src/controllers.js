@@ -12,16 +12,16 @@ demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerat
 
     //responsive image
     var imagesAsArray = [{
-        url: '/images/bikes-400.jpg',
+        url: 'images/bikes-400.jpg',
         width: '400'
     }, {
-        url: '/images/bikes-800.jpg',
+        url: 'images/bikes-800.jpg',
         width: '800'
     }, {
-        url: '/images/bikes-1280.jpg',
+        url: 'images/bikes-1280.jpg',
         width: '1280'
     }, {
-        url: '/images/bikes-2560.jpg',
+        url: 'images/bikes-2560.jpg',
         width: '2560'
     }];
 
