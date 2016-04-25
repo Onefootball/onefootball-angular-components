@@ -4,15 +4,15 @@ onefootball-angular-components
 [![Build Status](https://travis-ci.org/Onefootball/onefootball-angular-components.svg?branch=master)](https://travis-ci.org/Onefootball/onefootball-angular-components)
 [![Coverage Status](https://coveralls.io/repos/github/Onefootball/onefootball-angular-components/badge.svg?branch=master)](https://coveralls.io/github/Onefootball/onefootball-angular-components?branch=master)
 
-Different angular components - filters, directive, services - that we use in our daily development of best football platform: https://www.onefootball.com
+Different useful angular components (in-view, responsive image, lazy load, in viewport, filters,...), that we use in our daily development of best football platform: https://www.onefootball.com
 
 ## Demo, Code snippets 
 
-You can find demo [here] (http://onefootball.github.io/onefootball-angular-components/).
+You can find demo and code snippets (usage examples) [here] (http://onefootball.github.io/onefootball-angular-components/).
 
 ## Issues and questions
 
-If you have any issues or questions, please open github issue. Also improvement PRs are very welcome.
+If you have any issues or questions, please open a github issue.
 
 ## Usage
 
@@ -44,7 +44,7 @@ npm install onefootball-angular-components
 
 ```
 
-## Locally
+## Locally/Development
 
 To run locally, just clone the repo, then 
 
@@ -54,7 +54,7 @@ grunt demo
 
 ```
 
-## Test
+## Test and JSCS
 
 To run tests, run
 
@@ -93,8 +93,8 @@ Usage (works also with ngSrc):
 
 #### responsiveImage
 
-This directive provides a nice interface around the "srcset" attribute and acccepts both a placeholder URL 
-and a fallback one in case an error occures while loading the image. You can also subscribe to two events 
+This directive provides a nice interface around the "srcset" attribute and accepts both a placeholder URL 
+and a fallback one in case an error occurs while loading the image. You can also subscribe to two events 
 here, imgChange.success and imgChange.error.
 
 Usage (works also with ngSrc):
@@ -120,7 +120,7 @@ Usage (works also with ngSrc):
 
 #### inView
 
-InView directive triggers and event when element is in viewport. 
+InView directive triggers an event when element is in viewport. 
 
 Usage (for more info look at the demo):
 
@@ -144,8 +144,8 @@ Usage:
 
 #### diacriticFilter
 
-This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
-or when you want to generate url from name.
+This filter can be used to strip accents from words. This can be useful, when you want to sort words alphabetically,
+or when you want to generate url from name, title,...
 
 ```xml
 <ul>

@@ -1,7 +1,7 @@
 {
   "name": "onefootball-angular-components",
-  "version": "2.0.0",
-  "description": "Common angular components that will help you speed up development and deal with annoying isses",
+  "version": "2.0.1",
+  "description": "Different useful angular components (in-view, responsive image, lazy load, in viewport, filters,...)",
   "main": "dist/onefootball-angular-components.min.js",
   "scripts": {
     "test": "grunt test && grunt coveralls"
@@ -14,6 +14,13 @@
     "angular",
     "filters",
     "directive",
+    "in viewport",
+    "lazy load",
+    "responsive/lazy image",
+    "placeholder image",
+    "transliterate cyrillic",
+    "diatric strip",
+    "sort objects",
     "onefootball"
   ],
   "author": "Sinisa Grubor <sinisa.grubor@onefootball.com> (https://www.onefootball.com/)",
