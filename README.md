@@ -50,6 +50,7 @@ To run locally, just clone the repo, then
 
 ```
 npm install 
+bower install
 grunt demo
 
 ```
