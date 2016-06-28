@@ -1,15 +1,15 @@
 (function () {
     'use strict';
-    describe ('orderObjectBy', function () {
+    describe ('ofOrderObjectBy', function () {
 
         var orderObjectBy;
 
         beforeEach(function () {
-            module ('onefootball.components.filters.orderObjectBy');
+            module ('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            orderObjectBy = $filter('orderObjectBy');
+            orderObjectBy = $filter('ofOrderObjectBy');
         }));
 
         it ('order object by string property - alphabetically', function () {

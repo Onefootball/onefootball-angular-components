@@ -4,8 +4,7 @@ var demoApp = angular.module('demoModule', [
     'ngRoute',
     'demoControllers',
     'onefootball.components',
-    'ngSanitize',
-    'gist'
+    'ngSanitize'
 ]);
 
 demoApp.config(['$routeProvider', '$locationProvider',

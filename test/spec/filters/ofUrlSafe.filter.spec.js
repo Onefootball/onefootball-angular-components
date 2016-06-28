@@ -1,14 +1,14 @@
 (function () {
     'use strict';
-    describe ('urlText', function () {
+    describe ('ofUrlSafe', function () {
         var urlText;
         beforeEach(function () {
             module ('onefootball.components.filters');
-            module ('onefootball.components.services.diacriticsRemoval');
+            module ('onefootball.components.services');
         });
 
         beforeEach(inject(function ($filter) {
-            urlText = $filter('urlText');
+            urlText = $filter('ofUrlSafe');
         }));
 
         it ('converts unicode url to ascii - nicely', function () {

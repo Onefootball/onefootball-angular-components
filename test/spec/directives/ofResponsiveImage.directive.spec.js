@@ -25,11 +25,11 @@
     var fallbackUrl = 'http://placehold.it/700x300';
 
     beforeEach(function () {
-        module ('onefootball.components.directives.responsiveImage');
+        module ('onefootball.components.directives');
         module ('onefootball.components.config');
     });
 
-    describe ('responsiveImage with no src set', function () {
+    describe ('ofResponsiveImage with no src set', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -41,7 +41,7 @@
                 images: imagesAsArray,
                 sizes: sizes
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -50,9 +50,9 @@
             expect(element.attr('src')).toEqual (imagesAsArray[0].url);
         });
 
-        it ('success event triggered and srcset is set correctly and fake image is deleted from scope', inject(function (EventEnumerator) {
+        it ('success event triggered and srcset is set correctly and fake image is deleted from scope', inject(function (ofEventEnumerator) {
             var successCalled = false;
-            iScope.$on(EventEnumerator.imgChangeSuccess, function () {
+            iScope.$on(ofEventEnumerator.imgChangeSuccess, function () {
                 successCalled = true;
             });
             iScope.fakeImage.triggerHandler('load');
@@ -62,9 +62,9 @@
             expect(iScope.fakeImage).toBeUndefined();
         }));
 
-        it ('error event triggered, src set correctly and fakeImage is deleted from scope', inject(function (EventEnumerator) {
+        it ('error event triggered, src set correctly and fakeImage is deleted from scope', inject(function (ofEventEnumerator) {
             var errorCalled = false;
-            iScope.$on(EventEnumerator.imgChangeError, function () {
+            iScope.$on(ofEventEnumerator.imgChangeError, function () {
                 errorCalled = true;
             });
             iScope.fakeImage.triggerHandler('error');
@@ -76,7 +76,7 @@
         }));
     });
 
-    describe ('responsiveImage with src set', function () {
+    describe ('ofResponsiveImage with src set', function () {
         var element;
         var iScope;
         var src = "http://placehold.it/500x500";
@@ -89,7 +89,7 @@
                 images: imagesAsArray,
                 sizes: sizes
             };
-            element = $compile ('<img src=:url responsive-image="::image" />'.replace(':url', src)) (scope);
+            element = $compile ('<img src=:url of-responsive-image="::image" />'.replace(':url', src)) (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -99,7 +99,7 @@
         });
     });
 
-    describe ('responsiveImage works without fallback and placeholder', function () {
+    describe ('ofResponsiveImage works without fallback and placeholder', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -109,7 +109,7 @@
                 images: imagesAsArray,
                 sizes: sizes
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -130,7 +130,7 @@
         });
     });
 
-    describe ('responsiveImage with images as objects and no sizes (default size is set)', function () {
+    describe ('ofResponsiveImage with images as objects and no sizes (default size is set)', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -145,7 +145,7 @@
                     l: 'http://placehold.it/1000x1000'
                 }
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -160,7 +160,7 @@
         });
     });
 
-    describe ('responsiveImage with images as objects and sizes', function () {
+    describe ('ofResponsiveImage with images as objects and sizes', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -176,7 +176,7 @@
                 },
                 sizes: sizes
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -189,7 +189,7 @@
     });
 
 
-    describe ('responsiveImage width density instead of width', function () {
+    describe ('ofResponsiveImage width density instead of width', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -212,7 +212,7 @@
             scope.image = {
                 images: imagesAsArrayDensity
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -229,7 +229,7 @@
         });
     });
 
-    describe ('responsiveImage minimum representation', function () {
+    describe ('ofResponsiveImage minimum representation', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -242,7 +242,7 @@
                     l: 'http://placehold.it/1000x1000'
                 }
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
@@ -253,7 +253,7 @@
         });
     });
 
-    describe ('responsiveImage works with lazy load', function () {
+    describe ('ofResponsiveImage works with lazy load', function () {
         var element;
         var iScope;
         beforeEach(inject(function ($rootScope, $compile) {
@@ -267,13 +267,13 @@
                 },
                 lazyLoad: true
             };
-            element = $compile ('<img responsive-image="::image" />') (scope);
+            element = $compile ('<img of-responsive-image="::image" />') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
 
-        it ('lazy load is handled correctlu', inject(function (EventEnumerator) {
-            iScope.$emit(EventEnumerator.inView, element);
+        it ('lazy load is handled correctlu', inject(function (ofEventEnumerator) {
+            iScope.$emit(ofEventEnumerator.inView, element);
             iScope.fakeImage.triggerHandler('load');
             expect(element.attr('srcset')).toEqual ('http://placehold.it/100x100 1x,http://placehold.it/500x500 2x,http://placehold.it/1000x1000 3x');
         }));

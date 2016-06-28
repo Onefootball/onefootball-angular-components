@@ -2,12 +2,12 @@ var demoControllers = angular.module('demoControllers', []);
 
 demoControllers.controller('baseCtrl', function () {});
 
-demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerator', function ($scope, $window, EventEnumerator) {
+demoControllers.controller('directiveCtrl', ['$scope', '$window', 'ofEventEnumerator', function ($scope, $window, ofEventEnumerator) {
     //imgChange
     $scope.imageUrl = 'http://placehold.it/700x300';
 
-    $scope.$on(EventEnumerator.imgChangeSuccess, function () {
-        $window.alert('Img successfully changed');
+    $scope.$on(ofEventEnumerator.imgChangeSuccess, function (event, element) {
+        element[0].style.border = "1px solid black";
     });
 
     //responsive image
@@ -38,6 +38,15 @@ demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerat
         images: imagesAsArray,
         sizes: sizes,
         lazyLoad: true
+    };
+
+
+    $scope.$on (ofEventEnumerator.inView, function (event, element) {
+        element [0].innerHTML = 'You scrolled by this element at ' + new Date();
+    });
+
+    $scope.inViewOptions = {
+        keepBound: false
     };
 }]);
 
@@ -78,8 +87,8 @@ demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
     $scope.textForUrl = 'Jose Mourinho camp "frustrated" with Manchester Utd job situation - sources';
 }]);
 
-demoControllers.controller('serviceCtrl', ['$scope', 'Guid', function ($scope, Guid) {
+demoControllers.controller('serviceCtrl', ['$scope', 'ofGuid', function ($scope, ofGuid) {
     $scope.generateGuid = function () {
-        $scope.GUID = Guid.generate();
+        $scope.GUID = ofGuid.generate();
     };
 }]);

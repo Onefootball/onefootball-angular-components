@@ -1,8 +1,8 @@
 angular
-    .module('onefootball.components.filters.newlines', [])
-    .filter('newlines', newlines);
+    .module('onefootball.components.filters')
+    .filter('ofNewLines', ofNewLines);
 
-function newlines() {
+function ofNewLines() {
     return function (input) {
         // Replace all single or repeated newlines and single or repeated `<br/>`, `<br />` or `<br>` tags by a double `<br />`.
         if (input) {

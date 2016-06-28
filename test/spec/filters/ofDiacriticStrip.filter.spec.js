@@ -1,15 +1,15 @@
 (function () {
     'use strict';
-    describe ('diacriticStrip', function () {
+    describe ('ofDiacriticStrip', function () {
         var diacriticFilter;
 
         beforeEach (function () {
-            module ('onefootball.components.filters.diacriticStrip');
-            module ('onefootball.components.services.diacriticsRemoval');
+            module ('onefootball.components.filters');
+            module ('onefootball.components.services');
         });
 
         beforeEach (inject(function ($filter) {
-            diacriticFilter = $filter ('diacriticStrip');
+            diacriticFilter = $filter ('ofDiacriticStrip');
         }));
 
         it('should convert german umlaut correctly', inject(function () {

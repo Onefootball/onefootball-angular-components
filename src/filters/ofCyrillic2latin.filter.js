@@ -1,8 +1,8 @@
 angular
-    .module('onefootball.components.filters.cyrillic2latin', [])
-    .filter('cyrillic2latin', cyrillic2latin);
+    .module('onefootball.components.filters')
+    .filter('ofCyrillic2Latin', ofCyrillic2Latin);
 
-function cyrillic2latin() {
+function ofCyrillic2Latin() {
     return function (input) {
         var a = {
             "Ё": "YO",
