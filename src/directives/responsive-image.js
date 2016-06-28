@@ -73,14 +73,16 @@ function responsiveImage(EventEnumerator, $rootScope) {
         function handleImage() {
             // then we try to load the right image in the background
             scope.fakeImage = angular.element(new Image());
-            scope.fakeImage.bind("load", function (event) {
+            scope.fakeImage.bind("load", function loadFake (event) {
                 element.attr('srcset', scope.fakeImage.attr('srcset'));
+                scope.fakeImage.off();
                 delete scope.fakeImage;
                 scope.$emit(EventEnumerator.imgChangeSuccess, {src: getSrcFromEvent(event)});
             });
 
-            scope.fakeImage.bind("error", function () {
+            scope.fakeImage.bind("error", function errorFake () {
                 element.attr('src', _options.fallback);
+                scope.fakeImage.off();
                 delete scope.fakeImage;
                 scope.$emit(EventEnumerator.imgChangeError);
             });
