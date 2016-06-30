@@ -1,20 +1,29 @@
-<h3 id="img-change">Image fallback</h3>
+<h3 id="of-img-change">Image Change</h3>
 <p>
     General idea here is that we can use image placeholder, until we resolve our real url. Usually you would use
     image that is cached as placeholder and then replace it with real image. This offers better user experience.
 </p>
 
-<img src="http://placehold.it/350x150" img-change="::imageUrl" />
+<img src="http://placehold.it/350x150" of-img-change="::imageUrl" />
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
-<gist id="20b11b5f52575cd7fde0b0d5d18d9f5c"></gist>
+
+<pre><code>
+    demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerator', function ($scope, $window, EventEnumerator) {
+        $scope.imageUrl = 'http://placehold.it/700x300';
+        $scope.$on(ofEventEnumerator.imgChangeSuccess, function (event, element) {
+            element[0].style.border = "1px solid black";
+        });
+    }]);>
+</code></pre>
 
 <h6>HTML</h6>
-<gist id="cff8664bc718e9aa7063e6899ee91eea"></gist>
+<pre><code>
+    &lt;img src="http://placehold.it/350x150" of-img-change="::imageUrl" /&gt;
+</code></pre>
 
-
-<h3 id="responsive-image">Responsive Image</h3>
+<h3 id="of-responsive-image">Responsive Image</h3>
 <p>
     This directive provides a nice interface around the "srcset" attribute and accepts both a placeholder URL and a
     fallback one in case an error occurs while loading the image.
@@ -23,38 +32,101 @@
 <p>
     As an argument, this directive takes a responsive image object, which has the following properties:
 
-    <pre>
+<pre><code>
      * @param {string} fallback [OPTIONAL]      | will be used `src` in case of an error while loading the appropriate image - if not provided, we will render one empty pixel.
 
      * @param {string} placeholder [OPTIONAL]   | Will be set as a temporary `src` in case the attribute is not already present. If none of those is provided, we will render 1 empty pixel.
 
-     * @param {string|array|object} images      | The items in the array are expected to have a `url` property and either a `width` or a `density` one.
-                                                  In case of an object, each of the properties `s`, `m`, and  `l` is respectfully associated to the densities `1x`, `2x`, `3x`.
+     * @param {string|array|object} images      | The items in the array are expected to have a `url` property and either a `width` or a `density` one. In case of an object, each of the properties `s`, `m`, and  `l` is respectfully associated to the densities `1x`, `2x`, `3x`.
 
      * @param {string|array} sizes [OPTIONAL]   | Optional list of sizes to match to the elements in the `images` array. If sizes are not provided, we will set it as "(min-aspect-ratio: 4/5) 80vh".
 
-     * @params {boolean} lazyLoad [OPTIONAL]    | will load images only when they are in viewport (however placeholder - if set - will be loaded right away). This works in combination with in-view directive
-    </pre>
+     * @params {boolean} lazyLoad [OPTIONAL]    | will load images only when they are in viewport (however placeholder - if set - will be loaded right away). This works in combination with of-in-view directive (you have to put of-in-view directive on image tag)
+</code></pre>
 </p>
 
-<p>
-    For example usage, take a look at examples under.
+<p class="lead">
+    Check code example for usage explanation. To get more information about srcset, we recommend reading <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Example_3_Using_the_srcset_attribute" title="srcset">this </a>
 </p>
 
-<img responsive-image="::image"
-     in-view
+<img of-responsive-image="::image"
+     of-in-view
      alt="This is our responsive image"
      title="Isn't that nice?"
      style="max-width: 100%;" />
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
-<gist id="a08ae57205a9b7fe7ab0088d14b067a0"></gist>
+
+<pre>
+    <code>
+    demoControllers.controller('directiveCtrl', ['$scope', '$window', 'EventEnumerator', function ($scope, $window, EventEnumerator) {
+
+   //minimal representation
+   //html: &lt;img responsive-image="::image" /&gt;
+   scope.image = {
+      images: {
+        s: 'http://placehold.it/100x100',
+        m: 'http://placehold.it/500x500',
+        l: 'http://placehold.it/1000x1000'
+      }
+   };
+   //result &lt;img responsive-image="::image" class="ng-scope ng-isolate-scope" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" sizes="(min-aspect-ratio: 4/5) 80vh" srcset="http://placehold.it/100x100 1x,http://placehold.it/500x500 2x,http://placehold.it/1000x1000 3x"&gt;
+
+
+   // our demo code
+   //&lt;img responsive-image="::image" of-in-view/>
+   //note, you can replace width param here with density
+   var imagesAsArray = [{
+        url: '/images/bikes-400.jpg',
+        width: '400'
+    }, {
+        url: '/images/bikes-800.jpg',
+        width: '800'
+    }, {
+        url: '/images/bikes-1280.jpg',
+        width: '1280'
+    }, {
+        url: '/images/bikes-2560.jpg',
+        width: '2560'
+    }];
+
+    var sizes = [
+        "(max-width: 320px) 400px", // media + size (px or vw)
+        "(max-width: 800px) 800px",
+        "(max-width: 1440px) 1280px",
+        "2560px"
+    ];
+
+    $scope.image = {
+        placeholder: imagesAsArray[0].url,
+        fallback: 'http://placehold.it/700x300',
+        images: imagesAsArray,
+        sizes: sizes,
+        lazyLoad: true
+    };
+    //result (you can see this in action above - bike image)
+    //&lt;img responsive-image="::image" class="ng-scope ng-isolate-scope" src="/images/bikes-400.jpg" sizes="(max-width: 320px) 400px, (max-width: 800px) 800px, (max-width: 1440px) 1280px, 2560px" srcset="/images/bikes-400.jpg 400w, /images/bikes-800.jpg 800w, /images/bikes-1280.jpg 1280w, /images/bikes-2560.jpg 2560w"&gt;
+
+    $scope.$on(ofEventEnumerator.imgChangeSuccess, function (event, element) {
+        element[0].style.border = "1px solid black";
+    });
+}]);
+    </code>
+</pre>
 
 <h6>HTML</h6>
-<gist id="bd82fa3fe01c2d6b2ba7b1609cb2e9d7"></gist>
+<pre>
+    <code>
+    &lt;img of-responsive-image="::image"
+         in-view
+         alt="This is our responsive image"
+         title="Isn't that nice?"
+         style="max-width: 100%;" /&gt;
+    </code>
+</pre>
 
-<h3 id="in-view">In view</h3>
+<h3 id="of-in-view">In view</h3>
 <p>
     This directive triggers an event when element is in viewport. It passes also the right element to the event emit.
 </p>
@@ -69,12 +141,34 @@
 </p>
 
 <p>
-    You can see live demo in responsiveImage example (it is lazy loaded).
+    Example below writes the time, you scrolled element in viewport.
 </p>
+
+<div id="in-view-element" of-in-view="{{::inViewOptions}}">
+</div>
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
-<gist id="7fa6a59c8c0b4ae203e8af29fba06852"></gist>
+
+<pre><code>
+    demoControllers.controller('directiveCtrl', ['$scope', 'EventEnumerator', function ($scope, EventEnumerator) {
+       $scope.$on (ofEventEnumerator.inView, function (event, element) {
+            element [0].innerHTML = 'You scrolled by this element at ' + new Date();
+        });
+
+        $scope.inViewOptions = {
+            keepBound: false
+        };
+    }]);>
+</code></pre>
 
 <h6>HTML</h6>
-<gist id="bc7c4a734add6dfbd8d1c27cc5c1056d"></gist>
+<pre><code>
+    &lt;div id="in-view-element" of-in-view="&lbrace; &lbrace;::inViewOptions&rbrace; &rbrace;"> &lt;/div&gt;
+</code></pre>
+
+<script>
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+</script>

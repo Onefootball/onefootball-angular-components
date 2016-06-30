@@ -5,79 +5,93 @@
 <h3>
     Installation
 </h3>
-    <pre>
+<pre><code>
 bower install onefootball-angular-components
-    </pre>
-    <pre>
+</code></pre>
+<pre><code>
 npm install onefootball-angular-components
-    </pre>
+</code></pre>
+
 
 <h3>
     Include
 </h3>
     <p>
-        After installation, you just have to declare dependency in your module. We depend on angular-sanitize, so this should be part of you project as well,
-        if it's not already.
+        After installation, you just have to declare dependency in your module. We depend on angular-sanitize, so you should add it to your project.
     </p>
     <div class="gist-wrapper" style="margin-top:12px;">
-        <gist id="52be4ab5f396f8d1516995d4ad8bf5a6"></gist>
+<pre><code>
+   var demoApp = angular.module('demoModule', [
+        'onefootball.components',
+        'ngSanitize'
+    ]);
+</code></pre>
     </div>
 </p>
 
+<h3>
+    Components
+</h3>
 <p>
-    <h3>
+    <h4>
         <a href="#!/filters">Filters</a>
-    </h3>
+    </h4>
     <ul>
         <li>
-            <a href="#!/filters#cyrillic2latin">cyrillic2latin</a>
+            <a href="#!/filters#ofCyrillic2latin">ofCyrillic2Latin</a>
         </li>
         <li>
-            <a href="#!/filters#diacriticStrip">diacriticStrip</a>
+            <a href="#!/filters#ofDiacriticStrip">ofDiacriticStrip</a>
         </li>
         <li>
-            <a href="#!/filters#jsonPrettyprint">jsonPrettyprint</a>
+            <a href="#!/filters#ofJsonPrettyprint">ofJsonPrettyprint</a>
         </li>
         <li>
-            <a href="#!/filters#newlines">newlines</a>
+            <a href="#!/filters#ofNewLines">ofNewLines</a>
         </li>
         <li>
-            <a href="#!/filters#rderObjectBy">orderObjectBy</a>
+            <a href="#!/filters#ofOrderObjectBy">ofOrderObjectBy</a>
         </li>
         <li>
-            <a href="#!/filters#replace">replace</a>
+            <a href="#!/filters#ofReplace">ofReplace</a>
         </li>
         <li>
-            <a href="#!/filters#urlEncode">urlEncode</a>
+            <a href="#!/filters#ofUrlEncode">ofUrlEncode</a>
         </li>
         <li>
-            <a href="#!/filters#urlText">urlText</a>
+            <a href="#!/filters#ofUrlSafe">ofUrlSafe</a>
         </li>
     </ul>
 </p>
 <p>
-    <h3>
+    <h4>
         <a href="#!/directives">Directives</a>
-    </h3>
+    </h4>
     <ul>
         <li>
-            <a href="#!/directives#img-change">img-change</a>
+            <a href="#!/directives#of-img-change">of-img-change</a>
         </li>
         <li>
-            <a href="#!/directives#responsive-image">responsive-image</a>
+            <a href="#!/directives#of-responsive-image">of-responsive-image</a>
         </li>
         <li>
-            <a href="#!/directives#in-view">in-view</a>
+            <a href="#!/directives#of-in-view">of-in-view</a>
         </li>
     </ul>
 </p>
 <p>
-    <h3>
+    <h4>
         <a href="#!/services">Services</a>
-    </h3>
+    </h4>
     <ul>
         <li>
-            <a href="#!/services#guid">guid</a>
+            <a href="#!/services#ofGuid">ofGuid</a>
         </li>
     </ul>
 </p>
+
+<script>
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+</script>

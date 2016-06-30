@@ -1,4 +1,4 @@
-<h3 id="guid">GUID</h3>
+<h3 id="ofGuid">GUID</h3>
 <p>
     This service generates unique user id (GUID, UUID, UID)
 </p>
@@ -11,10 +11,31 @@
 
 <h5>Example code</h5>
 <h6>Javascript</h6>
-<div class="gist-wrapper">
-    <gist id="d3922f02c592b4955da3089ca4d831a7"></gist>
-</div>
+
+<pre><code>
+demoControllers.controller('serviceCtrl', ['$scope', 'ofGuid', function ($scope, ofGuid) {
+    $scope.generateGuid = function () {
+        $scope.GUID = ofGuid.generate();
+    };
+}]);
+</code></pre>
+
 <h6>HTML</h6>
-<div class="gist-wrapper">
-    <gist id="80a67c025293b83547b526617019664b"></gist>
-</div>
+<pre><code>
+    &lt;h3 id="guid"&gt;GUID&lt;/h3&gt;
+    &lt;p&gt;
+        This service generates unique user id (GUID, UUID, UID)
+    &lt;/p&gt;
+
+    &lt;button class="btn btn-default" data-ng-click="generateGuid()"&gt;Generate&lt;/button&gt;
+
+    &lt;p style="margin-top: 12px;" data-ng-if="GUID"&gt;
+        &lt;span&gt; Generated GUID: &lbrace; &lbrace;GUID &rbrace; &rbrace; &lt;/span&gt;
+    &lt;/p&gt;
+</code></pre>
+
+<script>
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+</script>
