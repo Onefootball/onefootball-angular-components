@@ -1,6 +1,6 @@
 {
   "name": "onefootball-angular-components",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Different useful angular components (in-view, responsive image, lazy load, in viewport, filters,...)",
   "main": "dist/onefootball-angular-components.min.js",
   "scripts": {
