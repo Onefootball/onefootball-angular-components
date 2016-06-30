@@ -3,88 +3,133 @@
 </h2>
 
 <div class="filter-section">
-    <h2 id="cyrillic2latin">Cyrillic2latin filter</h2>
+    <h3 id="ofCyrillic2latin">Cyrillic to Latin filter</h3>
     <p>
         This filter transliterate cyrillic to latin. We use it for generating cyrillic urls (to use ascii urls).
     </p>
 
     <ul>
-        <li ng-repeat= "item in cyrillicList">{{:: item}} ==> {{:: item | cyrillic2latin}}</li>
+        <li ng-repeat= "item in cyrillicList">{{:: item}} ==> {{:: item | ofCyrillic2Latin}}</li>
     </ul>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="d8c249d0580b41aa2f2de384e9f5793f"></gist>
-    </div>
-    <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="888659a226e55cfa9a7eb0c3ff7bd8d1"></gist>
-    </div>
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+            $scope.cyrillicList = ['радиатор', 'Антарктика', 'телеграмма', 'Англия', 'витамин', 'мираж', 'Шанхай'];
+        });
+    </code></pre>
+
+        <h6>HTML</h6>
+    <pre><code>
+        &lt;h3&gt;Cyrillic2latin filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter transliterate cyrillic to latin. We use it for generating cyrillic urls (to use ascii urls).
+        &lt;/p&gt;
+
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in cyrillicList"&gt;&lbrace; &lbrace;:: item&rbrace; &rbrace; ==> &lbrace; &lbrace;:: item | ofCyrillic2Latin&rbrace; &rbrace;&lt;/li&gt;
+        &lt;/ul>
+    </code></pre>
 </div>
 <hr/>
 
 <div class="filter-section">
-    <h3 id="diacriticStrip">Diacritic filter</h3>
+    <h3 id="ofDiacriticStrip">Diacritic remove filter</h3>
     <p>
         This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
         or when you want to generate url from name.
     </p>
 
     <ul>
-        <li ng-repeat= "item in diacriticList">{{:: item}} ==> {{:: item | diacriticStrip}}</li>
+        <li ng-repeat= "item in diacriticList">{{:: item}} ==> {{:: item | ofDiacriticStrip}}</li>
     </ul>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="893e772c31d45f0d79beb5798af8d1e2"></gist>
-    </div>
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+            $scope.diacriticList = ['dégagé', 'déjà vu', 'démarche', 'démodé', 'dénouement', 'Mützen', 'tête-à-tête'];
+        });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="72187ca197e633704ceac0a6d91b995b"></gist>
-    </div>
+    <pre><code>
+        &lt;h3&gt;Diacritic filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter can be used to strip accents from words. This can be usefull, when you want to sort words alphabetically,
+            or when you want to generate url from name.
+        &lt;/p&gt;
+
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in diacriticList"&gt;&lbrace; &lbrace;:: item&rbrace; &rbrace; ==> &lbrace; &lbrace;:: item | ofDiacriticStrip&rbrace; &rbrace;&lt;/li&gt;
+        &lt;/ul>
+    </code></pre>
 </div>
 <hr />
 
 <div class="filter-section">
-    <h3 id="jsonPrettyprint">Json pretty print filter</h3>
+    <h3 id="ofJsonPrettyprint">Json pretty print filter</h3>
     <p>
         This filter can be used to quickly pretty print JS object.
     </p>
     <h6>Normal output</h6>
     <pre>
-            {{:: customObject}}
-        </pre>
+{{:: customObject}}
+    </pre>
 
     <h6>Pretty output</h6>
     <pre>
-        {{:: customObject | jsonPrettyprint}}
+{{:: customObject | ofJsonPrettyprint}}
     </pre>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="2d18ba0a05fee7de34a0285f44953f82"></gist>
-    </div>
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+           $scope.customObject = {
+                name: 'Sinisa',
+                company: {
+                    name: 'Onefootball Gmbh',
+                    address: 'Greifswalder strasse 212'
+                },
+                status: 'Awesome',
+                food: ['Steak, pizza, coffee']
+            };
+        );
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="61a993779aa204752ee4981af8c8bb8a"></gist>
-    </div>
+    <pre><code>
+        &lt;h3&gt;Json pretty print filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter can be used to quickly pretty print JS object.
+        &lt;/p&gt;
+
+        &lt;h6>Normal output&lt;/h6&gt;
+        &lt;pre>
+            &lbrace; &lbrace;:: customObject&rbrace; &rbrace;
+        &lt;/pre>
+
+        &lt;h6>Pretty output&lt;/h6&gt;
+        &lt;pre&gt;
+            &lbrace; &lbrace;:: customObject | ofJsonPrettyprint&rbrace; &rbrace;
+        &lt;/pre&gt;
+    </code></pre>
 </div>
 
 <hr/>
 <div class="filter-section">
-    <h3 id="newlines">New lines filter</h3>
+    <h3 id="ofNewLines">New lines filter</h3>
     <p>
-        Often text is server from backend and has strange line breaks.
+        Often text that is served to the applications, have some strange line breaks.
         This filter, together with ngSanitize is used to normalize line breaks in chunk of text (output is html).
     </p>
 
     <h5>Original text</h5>
     <h6>Output</h6>
     <pre>
-        {{::newLinesText}}
+{{::newLinesText}}
     </pre>
     <h6>As html text</h6>
     <div ng-bind-html="::newLinesText">
@@ -93,25 +138,51 @@
     <h5>New lines text</h5>
     <h6>Output</h6>
     <pre>
-            {{::newLinesText | newlines}}
-        </pre>
+{{::newLinesText | ofNewLines}}
+    </pre>
     <h6>As html</h6>
-    <div ng-bind-html="::newLinesText | newlines">
+    <div ng-bind-html="::newLinesText | ofNewLines">
     </div>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="07b1b0881a5f987fedf02c44e07f6e05"></gist>
-    </div>
+
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+          $scope.newLinesText = 'This is some text\n that has a line break, &lt;br/&gt; &lt;br/&gt; &lt;br/&gt; &lt;br/&gt; &lt;br/&gt; \n\n\n\n\n which is unusual!';
+        });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="79d87411eb6cc67db923b1b9872f799b"></gist>
-    </div>
+    <pre><code>
+        &lt;h3&gt;New lines filter&lt;/h3&gt;
+        &lt;p&gt;
+            Often text is server from backend and has strange line breaks.
+            This filter, together with ngSanitize is used to normalize line breaks in chunk of text (output is html).
+        &lt;/p&gt;
+
+        &lt;h5&gt;Original text&lt;/h5&gt;
+        &lt;h6&gt;Output&lt;/h6&gt;
+        &lt;pre&gt;
+            &lbrace; &lbrace;::newLinesText&rbrace; &rbrace;
+        &lt;/pre&gt;
+        &lt;h6&gt;As html text&lt;/h6&gt;
+        &lt;div ng-bind-html="::newLinesText"&gt;
+        &lt;/div&gt;
+
+        &lt;h5&gt;New lines text&lt;/h5&gt;
+        &lt;h6&gt;Output&lt;/h6&gt;
+        &lt;pre&gt;
+                &lbrace; &lbrace;::newLinesText | ofNewLines&rbrace; &rbrace;
+        &lt;/pre&gt;
+        &lt;h6&gt;As html&lt;/h6&gt;
+        &lt;div ng-bind-html="::newLinesText | ofNewLines"&gt;
+        &lt;/div&gt;
+    </code></pre>
 </div>
 <hr/>
 <div class="filter-section">
-    <h3 id="orderObjectBy">Order object by filter</h3>
+    <h3 id="ofOrderObjectBy">Order object by filter</h3>
     <p>
         This filter is used to order list of objects by property.
     </p>
@@ -130,7 +201,7 @@
         List of object sorted by id
     </h5>
     <ul>
-        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'id'">
+        <li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'id'">
             name: {{:: item.name}},
             id: {{:: item.id}}
         </li>
@@ -139,7 +210,7 @@
         List of object sorted by name
     </h5>
     <ul>
-        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'name'">
+        <li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'name'">
             name: {{:: item.name}},
             id: {{:: item.id}}
         </li>
@@ -149,25 +220,82 @@
         List of object sorted by name reverted
     </h5>
     <ul>
-        <li ng-repeat= "item in listOfObjects | orderObjectBy : 'name' : true">
+        <li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'name' : true">
             name: {{:: item.name}},
             id: {{:: item.id}}
         </li>
     </ul>
-
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="0d87fa516f9313212f6367524f90eee4"></gist>
-    </div>
+
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+            $scope.listOfObjects = [
+                {
+                    id: 5,
+                    name: 'Zan'
+                },
+                {
+                    id: 1,
+                    name: 'Masa'
+                },
+                {
+                    id: 10,
+                    name: 'Neza'
+                }
+            ];
+        });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="b813f0dbf9ebabdfaf3773eed273369b"></gist>
-    </div>
+    <pre><code>
+        &lt;h3&gt;Order object by filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter is used to order list of objects by property.
+        &lt;/p&gt;
+
+        &lt;h5&gt;
+            Original list
+        &lt;/h5&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in listOfObjects"&gt;
+                name: &lbrace; &lbrace;:: item.name&rbrace; &rbrace;,
+                id: &lbrace; &lbrace;:: item.id&rbrace; &rbrace;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;h5&gt;
+            List of object sorted by id
+        &lt;/h5&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'id'"&gt;
+                name: &lbrace; &lbrace;:: item.name&rbrace; &rbrace;,
+                id: &lbrace; &lbrace;:: item.id&rbrace; &rbrace;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;h5&gt;
+            List of object sorted by name
+        &lt;/h5&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'name'"&gt;
+                name: &lbrace; &lbrace;:: item.name&rbrace; &rbrace;,
+                id: &lbrace; &lbrace;:: item.id&rbrace; &rbrace;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;h5&gt;
+            List of object sorted by name reverted
+        &lt;/h5&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat= "item in listOfObjects | ofOrderObjectBy : 'name' : true"&gt;
+                name: &lbrace; &lbrace;:: item.name&rbrace; &rbrace;,
+                id: &lbrace; &lbrace;:: item.id&rbrace; &rbrace;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    </code></pre>
 </div>
 <hr/>
 <div class="filter-section">
-    <h3 id="replace">Replace filter</h3>
+    <h3 id="ofReplace">Replace filter</h3>
     <p>
         This is a simple string replace filter. First argument is target to replace, second is replacement pattern and
         last one (optional) are regular expression flags.
@@ -177,28 +305,48 @@
     <div>{{::strReplace}}</div>
 
     <h5>Replace string (a witch c)</h5>
-    <div>{{::strReplace | replace : 'a' :'c'}}</div>
+    <div>{{::strReplace | ofReplace : 'a' :'c'}}</div>
 
     <h5>Replace string globally (a with c and flag g)</h5>
-    <div>{{::strReplace | replace : 'a' :'c' : 'g'}}</div>
+    <div>{{::strReplace | ofReplace : 'a' :'c' : 'g'}}</div>
 
     <h5>Replace string globally and ignore casing (a with c and flags gi)</h5>
-    <div>{{::strReplace | replace : 'a' :'c' : 'gi'}}</div>
+    <div>{{::strReplace | ofReplace : 'a' :'c' : 'gi'}}</div>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="747b81f047de97c37fd41df630186993"></gist>
-    </div>
+
+    <pre><code>
+    demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+       $scope.strReplace = 'aaaaaaaAaaaaaaabbbb';
+    });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="7e45ad2f0097b17f61e10b736e2ad475"></gist>
-    </div>
+    <pre><code>
+        &lt;h3 &gt;Replace filter&lt;/h3&gt;
+        &lt;p&gt;
+            This is a simple string replace filter. First argument is target to replace, second is replacement pattern and
+            last one (optional) are regular expression flags.
+        &lt;/p&gt;
+
+        &lt;h5&gt;Original string&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;::strReplace&rbrace; &rbrace;&lt;/div&gt;
+
+        &lt;h5&gt;Replace string (a witch c)&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;::strReplace | ofReplace : 'a' :'c'&rbrace; &rbrace;&lt;/div&gt;
+
+        &lt;h5&gt;Replace string globally (a with c and flag g)&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;::strReplace | ofReplace : 'a' :'c' : 'g'&rbrace; &rbrace;&lt;/div&gt;
+
+        &lt;h5&gt;Replace string globally and ignore casing (a with c and flags gi)&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;::strReplace | ofReplace : 'a' :'c' : 'gi'&rbrace; &rbrace;&lt;/div&gt;
+    </code></pre>
 </div>
 <hr/>
 
 <div class="filter-section">
-    <h3 id="urlEncode">Url encode filter</h3>
+    <h3 id="ofUrlEncode">Url encode filter</h3>
     <p>
         This filter is just a wrapper for encodeURI.
     </p>
@@ -207,22 +355,35 @@
     <div>{{:: encodeURIExample}}</div>
 
     <h5>Encoded url</h5>
-    <div>{{:: encodeURIExample | urlEncode}}</div>
+    <div>{{:: encodeURIExample | ofUrlEncode}}</div>
 
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="e2fa8fc3af3a29764e94947e2c18c98e"></gist>
-    </div>
+
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+            $scope.encodeURIExample = 'https://www.google.si/maps/search/greifswalder strasse 212';
+        });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="748baaa1e9f59bbc27fb38552e898b24"></gist>
-    </div>
+    <pre><code>
+        &lt;h3 id="urlEncode"&gt;Url encode filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter is just a wrapper for encodeURI.
+        &lt;/p&gt;
+
+        &lt;h5&gt;Original url&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;:: encodeURIExample&rbrace; &rbrace;&lt;/div&gt;
+
+        &lt;h5&gt;Encoded url&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;:: encodeURIExample | ofUrlEncode&rbrace; &rbrace;&lt;/div&gt;
+    </code></pre>
 </div>
 <hr/>
 
 <div class="filter-section">
-    <h3 id="urlText">Url text filter</h3>
+    <h3 id="ofUrlSafe">Url safe text filter</h3>
     <p>
         This filter converts random text to url save text (it supports also cyrillic text). It can be used to generate slugs,
         or rewrite urls.
@@ -232,15 +393,34 @@
     <div>{{:: textForUrl}}</div>
 
     <h5>Text "urlzied"</h5>
-    <div>{{:: textForUrl | urlText}}</div>
-
+    <div>{{:: textForUrl | ofUrlSafe}}</div>
     <h5>Example code</h5>
     <h6>Javascript</h6>
-    <div class="gist-wrapper">
-        <gist id="a9b6c3b4fe041acce8dcf6be2f91583f"></gist>
-    </div>
+
+    <pre><code>
+        demoControllers.controller('filterCtrl', ['$scope', function ($scope) {
+           $scope.textForUrl = 'Jose Mourinho camp "frustrated" with Manchester Utd job situation - sources';
+        });
+    </code></pre>
+
     <h6>HTML</h6>
-    <div class="gist-wrapper">
-        <gist id="88c5ec9607e1585c5286d67efc966157"></gist>
-    </div>
+    <pre><code>
+        &lt;h3 id="urlText"&gt;Url text filter&lt;/h3&gt;
+        &lt;p&gt;
+            This filter converts random text to url save text (it supports also cyrillic text). It can be used to generate slugs,
+            or rewrite urls.
+        &lt;/p&gt;
+
+        &lt;h5&gt;Original text&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;:: textForUrl&rbrace; &rbrace;&lt;/div&gt;
+
+        &lt;h5&gt;Text "urlzied"&lt;/h5&gt;
+        &lt;div&gt;&lbrace; &lbrace;:: textForUrl | ofUrlSafe&rbrace; &rbrace;&lt;/div&gt;
+    </code></pre>
 </div>
+
+<script>
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+</script>

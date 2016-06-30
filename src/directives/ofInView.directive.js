@@ -1,15 +1,15 @@
 angular
-    .module('onefootball.components.directives.inView', [])
-    .directive('inView', ['EventEnumerator', '$document', '$window', inView]);
+    .module('onefootball.components.directives')
+    .directive('ofInView', ['ofEventEnumerator', '$document', '$window', ofInView]);
 
-function inView(EventEnumerator, $document, $window) {
+function ofInView(ofEventEnumerator, $document, $window) {
     return {
         restrict: 'EA',
         /**
          *
          * @param scope
-         * @param scope.options - configuration options for in view directive
-         * @param scope.keepBound - by default, when element is in view, we will not listen for it anymore
+         * @param options - configuration options for in view directive
+         * @param options.keepBound - by default, when element is in view, we will not listen for it anymore
          *                          setting keepBound on true, will keep checking if element is in viewport
          * @param element
          * @param attrs
@@ -17,16 +17,15 @@ function inView(EventEnumerator, $document, $window) {
         link: function (scope, element, attrs) {
 
             var el = element [0];
-            var options = attrs.inView && $window.JSON.parse(attrs.inView) || {};
+            var options = attrs.ofInView && $window.JSON.parse(attrs.ofInView) || {};
             var keepBound = options.keepBound;
-
             inViewHandler(el);
 
             $document.bind('resize scroll', inViewHandler);
 
             function inViewHandler() {
                 if (isElementInViewport(el)) {
-                    scope.$emit(EventEnumerator.inView, element);
+                    scope.$emit(ofEventEnumerator.inView, element);
                     if (!keepBound) {
                         $document.unbind('resize scroll', inViewHandler);
                     }

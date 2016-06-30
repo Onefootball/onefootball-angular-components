@@ -1,13 +1,13 @@
 (function () {
     'use strict';
-    describe ('jsonPrettyprint', function () {
+    describe ('ofJsonPrettyprint', function () {
         var jsonPrettyprint;
         beforeEach(function () {
-            module ('onefootball.components.filters.jsonPrettyprint');
+            module ('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            jsonPrettyprint = $filter('jsonPrettyprint');
+            jsonPrettyprint = $filter('ofJsonPrettyprint');
         }));
 
         it ('encodes url correctly', function () {

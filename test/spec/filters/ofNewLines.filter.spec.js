@@ -1,13 +1,13 @@
 (function () {
     'use strict';
-    describe ('newlines', function () {
+    describe ('ofNewLines', function () {
         var newlines;
         beforeEach(function () {
-            module ('onefootball.components.filters.newlines');
+            module ('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            newlines = $filter('newlines');
+            newlines = $filter('ofNewLines');
         }));
 
         it ('normalizes line breaks correctly', function () {

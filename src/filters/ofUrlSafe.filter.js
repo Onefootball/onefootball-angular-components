@@ -1,19 +1,19 @@
 angular
-    .module('onefootball.components.filters.urlText', [])
-    .filter('urlText', ['DiacriticsRemoval', '$filter', urlText]);
+    .module('onefootball.components.filters')
+    .filter('ofUrlSafe', ['ofDiacriticsRemoval', '$filter', ofUrlSafe]);
 
 //spec:
 // - use only small letters in the URL
 // - avoid punctuation marks like ? and ! or other special characters ", & or + (except in attached parameters)
 
-function urlText(DiacriticsRemoval, $filter) {
+function ofUrlSafe(ofDiacriticsRemoval, $filter) {
     return function (input) {
         if (!input) {
             return '';
         }
-        input = $filter('cyrillic2latin') (input);
+        input = $filter('ofCyrillic2Latin') (input);
         //first replace accents
-        input = DiacriticsRemoval.stripDiacritics(input);
+        input = ofDiacriticsRemoval.stripDiacritics(input);
         //remove punctuation and strange chars
         input = input.replace(/[^A-Za-z0-9\-\s]/g, '');
         //replace multiple spaces by single spaces

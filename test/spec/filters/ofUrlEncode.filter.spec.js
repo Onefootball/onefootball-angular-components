@@ -1,13 +1,13 @@
 (function () {
     'use strict';
-    describe ('urlEncode', function () {
+    describe ('ofUrlEncode', function () {
     var urlEncode;
         beforeEach(function () {
-            module ('onefootball.components.filters.urlEncode');
+            module ('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            urlEncode = $filter('urlEncode');
+            urlEncode = $filter('ofUrlEncode');
         }));
 
         it ('encodes url correctly', function () {

@@ -1,27 +1,27 @@
 (function () {
     'use strict';
-    describe ('imgChange', function () {
+    describe ('ofImgChange', function () {
         var element;
         var iScope;
 
         beforeEach(function () {
-            module ('onefootball.components.directives.imgChange');
+            module ('onefootball.components.directives');
             module ('onefootball.components.config');
         });
 
         beforeEach(inject(function ($rootScope, $compile) {
             var scope = $rootScope;
             scope.imageUrl = 'http://lorempixel.com/400/200/fashion/';
-            element = $compile ('<img src="http://lorempixel.com/400/200/sports/" data-img-change="::imageUrl"/>') (scope);
+            element = $compile ('<img src="http://lorempixel.com/400/200/sports/" data-of-img-change="::imageUrl"/>') (scope);
             iScope = element.isolateScope();
             iScope.$digest();
         }));
 
         it ('changes src url on load', function () {
             element.triggerHandler('load');
-            expect(iScope.newImg.attr('src')).toEqual (iScope.imgChange);
+            expect(iScope.newImg.attr('src')).toEqual (iScope.ofImgChange);
             iScope.newImg.triggerHandler('load');
-            expect(element.attr('src')).toEqual (iScope.imgChange);
+            expect(element.attr('src')).toEqual (iScope.ofImgChange);
             expect(element.attr('loaded')).toEqual ('true');
         });
 
@@ -32,9 +32,9 @@
             expect(element.attr('loaded')).toEqual ('true');
         });
 
-        it ('success event triggered', inject(function (EventEnumerator) {
+        it ('success event triggered', inject(function (ofEventEnumerator) {
             var successCalled = false;
-            iScope.$on(EventEnumerator.imgChangeSuccess, function () {
+            iScope.$on(ofEventEnumerator.imgChangeSuccess, function () {
                 successCalled = true;
             });
             element.triggerHandler('load');
@@ -42,9 +42,9 @@
             expect(successCalled).toBe (true);
         }));
 
-        it ('error event triggered', inject(function (EventEnumerator) {
+        it ('error event triggered', inject(function (ofEventEnumerator) {
             var errorCalled = false;
-            iScope.$on(EventEnumerator.imgChangeError, function () {
+            iScope.$on(ofEventEnumerator.imgChangeError, function () {
                 errorCalled = true;
             });
             element.triggerHandler('load');

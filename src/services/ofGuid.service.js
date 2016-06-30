@@ -1,8 +1,8 @@
 angular
-    .module('onefootball.components.services.guid', [])
-    .service('Guid', ['$window', guidProvider]);
+    .module('onefootball.components.services')
+    .service('ofGuid', ['$window', ofGuid]);
 
-function guidProvider($window) {
+function ofGuid($window) {
 
     function Guid() {
     }

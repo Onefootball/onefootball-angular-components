@@ -1,14 +1,14 @@
 (function () {
     'use strict';
-    describe('cyrillic2latin filter', function () {
+    describe('ofCyrillic2Latin filter', function () {
         var cyrillic2latin;
 
         beforeEach(function () {
-            module('onefootball.components.filters.cyrillic2latin');
+            module('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            cyrillic2latin = $filter('cyrillic2latin');
+            cyrillic2latin = $filter('ofCyrillic2Latin');
         }));
 
         it('it should transliterate здорово to zdorov', inject(function () {

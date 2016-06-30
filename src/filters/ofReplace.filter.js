@@ -1,8 +1,8 @@
 angular
-    .module('onefootball.components.filters.replace', [])
-    .filter('replace', replace);
+    .module('onefootball.components.filters')
+    .filter('ofReplace', ofReplace);
 
-function replace() {
+function ofReplace() {
     return function (str, pattern, replacement, flags) {
         if (!flags) {
             flags = '';

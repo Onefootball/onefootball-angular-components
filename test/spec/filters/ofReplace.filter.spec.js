@@ -1,13 +1,13 @@
 (function () {
     'use strict';
-    describe ('replace', function () {
+    describe ('ofReplace', function () {
         var replace;
         beforeEach(function () {
-            module ('onefootball.components.filters.replace');
+            module ('onefootball.components.filters');
         });
 
         beforeEach(inject(function ($filter) {
-            replace = $filter('replace');
+            replace = $filter('ofReplace');
         }));
 
         it ('replace single occurrence', function () {

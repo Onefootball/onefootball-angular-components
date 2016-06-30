@@ -1,15 +1,15 @@
 (function () {
     'use strict';
-    describe('guid', function () {
+    describe('ofGuid', function () {
         var guid;
         var format = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
 
         beforeEach(function () {
-            module('onefootball.components.services.guid');
+            module('onefootball.components.services');
         });
 
-        beforeEach(inject(function (Guid) {
-            guid = Guid;
+        beforeEach(inject(function (ofGuid) {
+            guid = ofGuid;
         }));
 
         it('generates guid in right format', function () {

@@ -1,9 +1,9 @@
 // http://justinklemm.com/angularjs-filter-ordering-objects-ngrepeat/
 angular
-    .module('onefootball.components.filters.orderObjectBy', [])
-    .filter('orderObjectBy', orderObjectBy);
+    .module('onefootball.components.filters')
+    .filter('ofOrderObjectBy', ofOrderObjectBy);
 
-function orderObjectBy() {
+function ofOrderObjectBy() {
     return function (items, field, reverse) {
         var filtered = [];
         angular.forEach(items, function (item) {
